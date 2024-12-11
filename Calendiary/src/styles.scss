@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+html {
+    height: 100vh;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    height: 100vh;      /* Asegura que ocupen toda la altura de la pantalla */
+    overflow-x: hidden; /* Elimina desplazamiento horizontal */
+    overflow-y: auto;   /* Permite desplazamiento solo si es necesario */
+}
