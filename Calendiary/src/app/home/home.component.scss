@@ -1,3 +1,10 @@
+* {
+    // padding: 0;
+    // margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
 :host {
     display: block;
 }
@@ -8,18 +15,17 @@
     justify-content: center;
     align-items: center;
     height: auto;
-    //height: 160vh;
-    background: linear-gradient(to bottom, #f5f7fa, #c3cfe2);
 }
 
 .hero {
     display: flex;
-    flex-direction: column;
+    flex-direction: row wrap;
     justify-content: center;
     align-items: center;
-    padding: 0em 1em;
+    padding-bottom: 1em;
     width: 100%;
-    background: linear-gradient(to bottom, #f5f7fa, #172742);
+    height: 70vh;
+    background-color: #ffffff;
 }
 
 .hero-body {
@@ -27,10 +33,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 3em;
-}
-
-.hero-title {
+    width: 30%;
+    height: 100%;
+    margin: 0em;
+    background-color: #1B1725;
+    color: white;
 }
 
 .hero-description {
@@ -38,10 +45,15 @@
     flex-direction: column;
 }
 
+.hero-description p {
+    margin: 1em;
+}
+
 .hero-buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: 1em;
 }
 
 .hero-buttons button {
@@ -55,35 +67,47 @@
     transition: background-color 0.3s ease;
 }
 
+
+
 .hero-buttons .start {
-    background-color: #607d8b;
+    background-color: #226CE0  ;
+}
+
+.hero-buttons .start:hover {
+    color: white;
+    text-decoration: underline;
 }
 
 .hero-buttons .learn {
     background-color: #ffffff;
-    color: black;
-    border: 1px solid black;
 }
 
-.hero-image {
+.hero-buttons .learn:hover {
+    text-decoration: underline;
+}
+
+.hero-img {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 70%;
+    background-color: #ffffff;
     margin: 0em 0em;
-    padding: 0em 3em;
+    padding: 0em 0em;
 }
 
-.hero-footer {
-    display: flex;
-}
-
-.hero-image img {
+.hero-img img {
     height: 20em;
 }
 
 img {
     height: 10em;
+}
+
+#features {
+    scroll-margin-top: 80px;
 }
 
 .plank_type_1 {
@@ -92,20 +116,9 @@ img {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #37474f;
     padding: 0;
     margin: 0;
-}
 
-.plank_type_1 img {
-    padding: 1em;
-    margin: 0;
-    height: 15em;
-    display: block;
-}
-
-.plank-body {
-    padding: 1em 2em;
 }
 
 .plank_type_2 {
@@ -114,14 +127,27 @@ img {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #ffffff;
     padding: 0;
     margin: 0;
+    background-color: #d8d8d8;
 }
 
-.plank_type_2 img {
+.plank-image {
+    display: flex;
+    align-items: center;
     padding: 1em;
     margin: 0;
     height: 15em;
-    display: block;
 }
+
+.plank-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.plank-body {
+    padding: 1em 2em;
+}
+
+
