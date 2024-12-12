@@ -1,77 +1,62 @@
+* {
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
 :host {
-    display: block;
     width: 100%;
-    position: sticky;
+    height: 80px;
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    z-index: 0;
 }
 
 header {
     width: 100%;
-    padding: 0;
-    margin: 0;
-    height: auto;
+    height: 80px;
+    display: flex;
+    align-items: center;
     background: white;
+    padding: 0 10%;
+    box-sizing: border-box;
 }
-.container {
+
+.inner_header {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
-    padding: .5rem;
 }
 
 .title {
-    padding: 0rem 1.5rem;
-}
-
-.extras {
-    flex-grow: 1; 
     display: flex;
-    justify-content: flex-end; 
     align-items: center;
-    gap: 1rem;
-    margin-right: 1.5rem;
 }
 
-.others {
-    padding: 0 1.5rem;
-    border: 0;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+.title h2 {
+    margin: 0;
+    font-size: 1.5rem;
 }
 
-.others:hover {
-    text-decoration: underline;
-    background-color: #cacaca;
+.navigation {
+    display: flex;
+    align-items: center;
 }
 
-.about {
-    margin-left: 1rem;
-}
-
-.about button {
-
-    padding: 1rem 3rem;
-    
-    border: 0px;
-    border-radius: 4px;
-    
-    background-color: #607d8b;
-    font-size:medium;
-    color: white;
-    transition: background-color 0.3s ease;
-}
-
-.about button:hover {
-    background-color: #4a4d4e;
-}
-
-a {
-    text-decoration: none;
+.navigation a {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px; 
     color: black;
-    display: inline-block; /* Hace que el <a> ocupe todo el espacio de su contenedor */
-    width: 100%; /* Asegura que el enlace ocupe todo el ancho */
-    height: 100%; /* Asegura que el enlace ocupe todo el alto */
-    padding: 0rem 0.5rem;
+    text-decoration: none;
+    height: auto; 
+}
+
+.navigation a:hover {
+    border-radius: 4px;
+    font-weight: 800;
+    text-decoration: underline;
 }
