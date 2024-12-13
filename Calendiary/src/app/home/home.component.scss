@@ -40,20 +40,27 @@
     color: white;
 }
 
+.hero-title {
+    padding: 0 0.5em;
+}
+
+
+.hero-title h2 {
+    text-align: center;
+}
+
 .hero-description {
-    display: flex;
-    flex-direction: column;
+    padding: 0 1em;
 }
 
 .hero-description p {
-    margin: 1em;
+    text-align: center;
 }
 
 .hero-buttons {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    margin: 1em;
+    align-items: center;
 }
 
 .hero-buttons button {
