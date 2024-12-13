@@ -1,3 +1,11 @@
+:host {
+    position: sticky;
+    top: 0;
+    z-index: 10; 
+    width: 20%;
+    height: 100%;
+}
+
 * {
     list-style: none;
     text-decoration: none;
@@ -8,8 +16,8 @@
 .container {
     background-color: #1B1725;
     color: white;
-    height: 100vh;
-    width: 20%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -27,7 +35,7 @@
 
 .container ul .dashboard-section {
     padding: 0.5em 1em;
-    height: 20%;
+    height: 15%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -41,12 +49,12 @@
 
 .container ul .list-section {
     padding: 0.5em 1em;
-    height: 60%;
+    height: 70%;
 }
 
 .container ul .lists-section {
     padding: 0.5em 1em;
-    height: 20%;
+    height: 15%;
 }
 
 .container ul .menu-group .menu-item {
