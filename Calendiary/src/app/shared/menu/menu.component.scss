@@ -1,0 +1,69 @@
+* {
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    background-color: #1B1725;
+    color: white;
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container ul {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.container ul .menu-section {
+    margin: 1em 1em; 
+}
+
+.container ul .dashboard-section {
+    padding: 0.5em 1em;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.container ul .dashboard-section ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.container ul .list-section {
+    padding: 0.5em 1em;
+    height: 60%;
+}
+
+.container ul .lists-section {
+    padding: 0.5em 1em;
+    height: 20%;
+}
+
+.container ul .menu-group .menu-item {
+    padding: 0.5em 1em;
+}
+
+.container ul .menu-group .menu-item:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+.container ul .menu-group .menu-item a {
+    font-size:larger;
+}
+
+.container ul .menu-divider {
+    border: none;
+    border-top: 1px solid #555;
+    margin: 10px 0;
+}
