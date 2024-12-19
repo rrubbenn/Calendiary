@@ -1,5 +1,8 @@
+@use '_colors' as colors;
+
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 
 html {
     height: 100%;
@@ -15,4 +18,28 @@ body {
     overflow-x: hidden; 
     overflow-y: auto;  
     background-color: #ffffff; 
+}
+
+.completed {
+    color: colors.$completed;
+}
+
+.in-progress {
+    color: colors.$in-progress;
+}
+
+.not-started {
+    color: colors.$not-started;
+}
+
+.high-priority {
+    color: colors.$high-priority;
+}
+
+.moderate-priority {
+    color: colors.$moderate-priority;
+}
+
+.low-priority {
+    color: colors.$low-priority;
 }
