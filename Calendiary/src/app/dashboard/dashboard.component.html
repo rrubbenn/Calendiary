@@ -1,0 +1,77 @@
+<app-header></app-header>
+<app-menu></app-menu>
+
+<div class="content">
+    <h2> Dashboard </h2>
+
+    <h4> Tasks Summary </h4>
+    <div class="summary">
+        @for (chart of charts; track chart.title) {
+            <div class="summary-block">
+                <div class="relative">
+                    <canvas baseChart
+                        [data]="{ datasets: [
+                            { 
+                                data: [ chart.completedTasks, chart.allTasks ], 
+                                backgroundColor: chart.backgroundColor, 
+                                hoverBackgroundColor: chart.hoverBackgroundColor, 
+                                hoverBorderWidth: chart.hoverBorderWidth, 
+                                borderWidth: chart.borderWidth
+                                }
+                            ]}"
+                        [options]="pieChartOptions"
+                        [type]="chartType"
+                        >
+                    </canvas>
+                    <div class="absolute-center">
+                        <h1> {{ chart.percentage }} </h1>
+                    </div>
+                </div>
+
+                <p> {{ chart.title }} <mat-icon class="{{ chart.class }}"> circle </mat-icon> </p>
+            </div>
+        }
+    </div>
+
+        <!-- <div class="summary-block"> 
+            <div>
+                <canvas baseChart
+                    [data]="pieChartData"
+                    [options]="pieChartOptions"
+                    [type]="chartType"
+                    datasets="backgroundColor: ['#737373', '#36bd7c']">
+                </canvas>
+            </div>
+            
+        </div>
+        <div class="summary-block"> 
+            <div>
+                <canvas baseChart
+                    [data]="pieChartData"
+                    [options]="pieChartOptions"
+                    [type]="chartType">
+                </canvas>
+            </div>
+            <p> In Progress <mat-icon class="in-progress"> circle </mat-icon> </p>
+        </div>
+        <div class="summary-block"> 
+            <div>
+                <canvas baseChart
+                    [data]="pieChartData"
+                    [options]="pieChartOptions"
+                    [type]="chartType">
+                </canvas>
+            </div>
+            <p> Not Started <mat-icon class="not-started"> circle </mat-icon> </p>
+        </div>
+        <div class="summary-block"> 
+            <div>
+                <canvas baseChart
+                    [data]="pieChartData"
+                    [options]="pieChartOptions"
+                    [type]="chartType">
+                </canvas>
+            </div>
+            <p> Overall </p>
+        </div> -->
+</div>
