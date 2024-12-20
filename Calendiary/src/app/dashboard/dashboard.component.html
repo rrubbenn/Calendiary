@@ -3,74 +3,89 @@
 <div class="content">
     <h2> Dashboard </h2>
 
-    <h4> Tasks Summary </h4>
-    <div class="summary">
-        @for (chart of charts; track chart.title) {
-            <div class="summary-block">
-                <div class="relative">
-                    <canvas baseChart
-                        [data]="{ datasets: [
-                            { 
-                                data: [ chart.completedTasks, chart.allTasks ], 
-                                backgroundColor: chart.backgroundColor, 
-                                hoverBackgroundColor: chart.hoverBackgroundColor, 
-                                hoverBorderWidth: chart.hoverBorderWidth, 
-                                borderWidth: chart.borderWidth
-                                }
-                            ]}"
-                        [options]="pieChartOptions"
-                        [type]="chartType"
-                        >
-                    </canvas>
-                    <div class="absolute-center">
-                        <h1> {{ chart.percentage }} </h1>
-                    </div>
-                </div>
 
-                <p> {{ chart.title }} <mat-icon class="{{ chart.class }}"> circle </mat-icon> </p>
-            </div>
-        }
+    <div class="summary">
+        <div class="title">
+            <h3> Tasks Summary </h3>
+        </div>
+        <div class="summary-content">
+            @for (chart of charts; track chart.title) {
+                <div class="summary-block">
+                    <div class="relative">
+                        <canvas baseChart
+                            [data]="{ datasets: [
+                                { 
+                                    data: [ chart.completedTasks, chart.allTasks ], 
+                                    backgroundColor: chart.backgroundColor, 
+                                    hoverBackgroundColor: chart.hoverBackgroundColor, 
+                                    hoverBorderWidth: chart.hoverBorderWidth, 
+                                    borderWidth: chart.borderWidth
+                                    }
+                                ]}"
+                            [options]="pieChartOptions"
+                            [type]="chartType"
+                            >
+                        </canvas>
+                        <div class="absolute-center">
+                            <h1> {{ chart.percentage }} </h1>
+                        </div>
+                    </div>
+    
+                    <p> {{ chart.title }} <mat-icon [style.color]="'var(--'+chart.class+')'"> circle </mat-icon> </p>
+                </div>
+            }
+        </div>
+        
     </div>
 
-        <!-- <div class="summary-block"> 
-            <div>
-                <canvas baseChart
-                    [data]="pieChartData"
-                    [options]="pieChartOptions"
-                    [type]="chartType"
-                    datasets="backgroundColor: ['#737373', '#36bd7c']">
-                </canvas>
-            </div>
-            
+    <div>
+        <div class="title">
+            <h3> Upcoming Tasks </h3>
         </div>
-        <div class="summary-block"> 
-            <div>
-                <canvas baseChart
-                    [data]="pieChartData"
-                    [options]="pieChartOptions"
-                    [type]="chartType">
-                </canvas>
-            </div>
-            <p> In Progress <mat-icon class="in-progress"> circle </mat-icon> </p>
+        <div class="tasks-info">
+            <div> Group </div>
+            <div> Task </div>
+            <div> End Date </div>
+            <div class="priority"> Priority </div>
+            <div class="complete"> Mark as Completed </div>
+            <div> </div>
         </div>
-        <div class="summary-block"> 
-            <div>
-                <canvas baseChart
-                    [data]="pieChartData"
-                    [options]="pieChartOptions"
-                    [type]="chartType">
-                </canvas>
-            </div>
-            <p> Not Started <mat-icon class="not-started"> circle </mat-icon> </p>
+        <div class="tasks-content">
+            @for(task of tasks; track task.id) {
+                <div class="task">
+                    <div class="task-basic" (click)="showDescription(task.id)">
+                        <div> {{ task.group }} </div>
+                        <div> {{ task.name }} </div>
+                        <div> {{ task.date }} </div>
+                        <div class="priority" [ngStyle]="{ backgroundColor: getColor(task.priority) }"> {{ task.priority }} </div>
+                        <button class="complete-button"> Complete </button>
+                        <div class="icon"
+                            (click)="$event.stopPropagation()" 
+                            [matMenuTriggerFor]="menu"> 
+                                <mat-icon style="color: var(--secondary);"> more_vert </mat-icon> 
+                        </div>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="editTask(task.id)">
+                                <mat-icon>edit</mat-icon>
+                                <span>Edit</span>
+                            </button>
+                            <button mat-menu-item 
+                                    (click)="deleteTask(task.id)" 
+                                    style="color: red">
+                                <mat-icon style="color: red">delete</mat-icon>
+                                <span>Delete</span>
+                            </button>
+                        </mat-menu>
+
+                    </div>
+                    @if ( visibleTaskId === task.id ) {
+                        <div class="task-additional">
+                            {{ task.description }}
+                        </div>
+                    }
+                </div>
+            }
         </div>
-        <div class="summary-block"> 
-            <div>
-                <canvas baseChart
-                    [data]="pieChartData"
-                    [options]="pieChartOptions"
-                    [type]="chartType">
-                </canvas>
-            </div>
-            <p> Overall </p>
-        </div> -->
+    </div>
 </div>
+

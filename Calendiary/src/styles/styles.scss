@@ -2,7 +2,24 @@
 
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+
+:root {
+    --completed: #{colors.$completed};
+    --in-progress: #{colors.$in-progress};
+    --not-started: #{colors.$not-started};
+    --overall: #{colors.$overall};
+
+    --secondary: #{colors.$secondary};
+
+    --high-priority: #{colors.$high-priority};
+    --moderate-priority: #{colors.$moderate-priority};
+    --low-priority: #{colors.$low-priority};
+
+    --sidebar: #{colors.$sidebar};
+    --delete: #{colors.$delete};
+}
 
 html {
     height: 100%;
@@ -18,32 +35,4 @@ body {
     overflow-x: hidden; 
     overflow-y: auto;  
     background-color: #ffffff; 
-}
-
-.completed {
-    color: colors.$completed;
-}
-
-.in-progress {
-    color: colors.$in-progress;
-}
-
-.not-started {
-    color: colors.$not-started;
-}
-
-.overall {
-    color: colors.$overall;
-}
-
-.high-priority {
-    color: colors.$high-priority;
-}
-
-.moderate-priority {
-    color: colors.$moderate-priority;
-}
-
-.low-priority {
-    color: colors.$low-priority;
 }
