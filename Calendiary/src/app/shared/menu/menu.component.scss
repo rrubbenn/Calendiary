@@ -34,7 +34,7 @@
 }
 
 .container ul .dashboard-section {
-    padding: 0.5em 1em;
+    padding: 0.5em 0em;
     height: 15%;
     display: flex;
     flex-direction: column;
@@ -48,16 +48,18 @@
 }
 
 .container ul .list-section {
-    padding: 0.5em 1em;
-    height: 70%;
+    padding: 0.5em 0em;
+    height: 75%;
 }
 
 .container ul .lists-section {
-    padding: 0.5em 1em;
-    height: 15%;
+    padding: 0.5em 0em;
+    height: 10%;
 }
 
 .container ul .menu-group .menu-item {
+    display: flex;
+    justify-content: space-between;
     padding: 0.5em 1em;
 }
 
