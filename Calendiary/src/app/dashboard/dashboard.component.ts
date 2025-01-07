@@ -5,7 +5,9 @@ import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { NgStyle } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialog } from '@angular/material/dialog';
+import { EditModalComponent } from './modals/edit-modal/edit-modal.component';
+import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
 
 
 @Component({
@@ -144,12 +146,37 @@ export class DashboardComponent {
     }
   }
 
+  constructor(private dialog: MatDialog) {}
+
   editTask(taskId: number) {
     console.log(taskId)
+    const dialogRef = this.dialog.open(EditModalComponent, {
+      width: '70%',
+      height: '70%',
+      data: { id: taskId, name: 'Current Task Name' } 
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Task updated:', result);
+        
+      }
+    });
   }
 
   deleteTask(taskId: number) {
     console.log(taskId)
+    const dialogRef = this.dialog.open(DeleteModalComponent, {
+      width: '40%',
+      data: { id: taskId, name: 'Current Task Name' } 
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Task deleted:', result);
+        
+      }
+    });
   }
 
 }

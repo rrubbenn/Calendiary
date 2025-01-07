@@ -1,0 +1,67 @@
+<div class="dialog-header">
+    <span>Edit Task</span>
+    <button mat-icon-button class="close-button" (click)="onCancel()" aria-label="Close">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div class="dialog-content">
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Enter task title" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="startDate" placeholder="Choose start date" required>
+            <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Group</mat-label>
+            <mat-select>
+                <mat-option value="group1">Group 1</mat-option>
+                <mat-option value="group2">Group 2</mat-option>
+                <mat-option value="group3">Group 3</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>End Date</mat-label>
+            <input matInput [matDatepicker]="endDate" placeholder="Choose end date" required>
+            <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Priority</mat-label>
+            <mat-select>
+                <mat-option value="high">High</mat-option>
+                <mat-option value="medium">Moderate</mat-option>
+                <mat-option value="low">Low</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="time-fields">
+            <mat-form-field appearance="fill">
+                <mat-label>Start Hour</mat-label>
+                <input matInput type="time" placeholder="Select start time" required>
+            </mat-form-field>
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Finish Hour</mat-label>
+                <input matInput type="time" placeholder="Select finish time" required>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="fill" class="description">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Enter description" rows="4"></textarea>
+        </mat-form-field>
+    </form>
+</div>
+<div class="dialog-actions" >
+    <button mat-button class="cancel-button" (click)="onCancel()">Cancel</button>
+    <button mat-button class="save-button" (click)="onSave()">Save</button>
+</div>
