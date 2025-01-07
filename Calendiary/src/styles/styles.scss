@@ -11,7 +11,10 @@
     --not-started: #{colors.$not-started};
     --overall: #{colors.$overall};
 
+    --primary: #{colors.$primary};
+    --primary-hover: #{colors.$primary-hover};
     --secondary: #{colors.$secondary};
+    --secondary-hover: #{colors.$secondary-hover};
 
     --high-priority: #{colors.$high-priority};
     --moderate-priority: #{colors.$moderate-priority};
@@ -19,6 +22,7 @@
 
     --sidebar: #{colors.$sidebar};
     --delete: #{colors.$delete};
+    --delete-hover: #{colors.$delete-hover};
 }
 
 html {
