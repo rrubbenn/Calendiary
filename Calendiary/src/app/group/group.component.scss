@@ -65,9 +65,8 @@
     display: grid;
     grid-template-columns: 2fr 6fr 2fr 2fr 2fr 1fr;
     gap: 1em;
-    border-radius: 10px;
-    padding: 0em 0.5em;
     margin: 0.3em 0;
+    padding: 0.5em 1em;
 }
 
 .tasks-info div {
@@ -77,7 +76,7 @@
     justify-content: start;
 }
 
-.tasks-info .priority, .complete {
+.tasks-info .center {
     text-align: center;
     justify-content: center;
 }
@@ -86,7 +85,7 @@
 
 .task-basic {
     display: grid;
-    grid-template-columns: 4fr 12fr 4fr 4fr 4fr 1fr;
+    grid-template-columns: 2fr 6fr 2fr 2fr 2fr 1fr;
     gap: 1em;
 }
 

@@ -13,8 +13,8 @@
         <div> Group </div>
         <div> Task </div>
         <div> End Date </div>
-        <div class="priority"> Priority </div>
-        <div class="complete"> Mark as Completed </div>
+        <div class="center"> Priority </div>
+        <div class="center"> Mark as Completed </div>
         <div> </div>
     </div>
     <div class="tasks-content">
@@ -26,10 +26,12 @@
                     <div> {{ task.date }} </div>
                     <div class="priority" [ngStyle]="{ backgroundColor: getColor(task.priority) }"> {{ task.priority }} </div>
                     <button class="complete-button"> Complete </button>
-                    <div class="icon"
-                        (click)="$event.stopPropagation()" 
-                        [matMenuTriggerFor]="menu"> 
-                            <mat-icon style="color: var(--secondary);"> more_vert </mat-icon> 
+                    <div class="icon"> 
+                            <mat-icon style="color: var(--secondary);"
+                            (click)="$event.stopPropagation()" 
+                            [matMenuTriggerFor]="menu">
+                                more_vert
+                            </mat-icon> 
                     </div>
                     <mat-menu #menu="matMenu">
                         <button mat-menu-item (click)="editTask(task.id)">
