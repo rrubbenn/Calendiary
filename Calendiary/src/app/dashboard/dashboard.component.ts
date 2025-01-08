@@ -6,8 +6,8 @@ import { NgChartsModule } from 'ng2-charts';
 import { NgStyle } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
-import { EditModalComponent } from './modals/edit-modal/edit-modal.component';
-import { DeleteModalComponent } from './modals/delete-modal/delete-modal.component';
+import { TaskEditModalComponent } from '../group/task-edit-modal/task-edit-modal.component';
+import { TaskDeleteModalComponent } from '../group/task-delete-modal/task-delete-modal.component';
 
 
 @Component({
@@ -150,7 +150,7 @@ export class DashboardComponent {
 
   editTask(taskId: number) {
     console.log(taskId)
-    const dialogRef = this.dialog.open(EditModalComponent, {
+    const dialogRef = this.dialog.open(TaskEditModalComponent, {
       width: '70%',
       height: '70%',
       data: { id: taskId, name: 'Current Task Name' } 
@@ -166,7 +166,7 @@ export class DashboardComponent {
 
   deleteTask(taskId: number) {
     console.log(taskId)
-    const dialogRef = this.dialog.open(DeleteModalComponent, {
+    const dialogRef = this.dialog.open(TaskDeleteModalComponent, {
       width: '40%',
       data: { id: taskId, name: 'Current Task Name' } 
     });
