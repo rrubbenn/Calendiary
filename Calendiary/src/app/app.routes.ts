@@ -2,6 +2,7 @@ import { Routes } from "@angular/router";
 
 import { HomeComponent } from "./home/home.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { GroupComponent } from "./group/group.component";
 
 export const routes: Routes = [
     {
@@ -13,5 +14,10 @@ export const routes: Routes = [
         path: 'dashboard',
         component: DashboardComponent,
         title: 'Dashboard'
+    },
+    {
+        path: 'group',
+        component: GroupComponent,
+        title: 'Group'
     }
 ]
