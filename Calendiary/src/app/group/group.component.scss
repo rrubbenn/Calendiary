@@ -1,0 +1,126 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.content {
+    
+    margin: 1em;
+}
+
+.group-header {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 60%;
+    color: white;
+    margin: 0rem 1rem;
+    padding: 0.5rem 1rem;
+    border: 0;
+    border-radius: 4px;
+    font-size: medium;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.start {
+    background-color: var(--secondary);
+}
+
+.start:hover {
+    background-color: var(--secondary-hover);
+}
+
+.button .mat-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-right: 0.5rem;
+    color: inherit; 
+}
+
+
+.task {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+    margin: 0.3em 0;
+    padding: 0.5em 1em;
+}
+
+.tasks-info {
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr 2fr 2fr 1fr;
+    gap: 1em;
+    border-radius: 10px;
+    padding: 0em 0.5em;
+    margin: 0.3em 0;
+}
+
+.tasks-info div {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.tasks-info .priority, .complete {
+    text-align: center;
+    justify-content: center;
+}
+
+
+
+.task-basic {
+    display: grid;
+    grid-template-columns: 4fr 12fr 4fr 4fr 4fr 1fr;
+    gap: 1em;
+}
+
+.task-additional {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-top: 1px solid #ddd;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.task-basic div {
+    display: flex;
+    align-items: center;
+}
+
+.task-basic .priority {
+    font-size: small;
+    padding: 1em;
+    border: 0px;
+    border-radius: 10px;
+    color: white;
+    justify-content: center;
+}
+
+.task-basic .complete-button {
+    border: 0px;
+    border-radius: 10px;
+    // padding: 0.5em;
+    color: white;
+    background-color: var(--completed);
+}
+
+.task-basic .icon {
+    justify-content: end;
+}
