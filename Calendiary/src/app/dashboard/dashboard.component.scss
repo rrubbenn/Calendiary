@@ -67,6 +67,19 @@ mat-icon {
     padding-left: 0.5em;
 }
 
+.tasks-info {
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr 2fr 2fr 1fr;
+    gap: 1em;
+    margin: 0.3em 0;
+    padding: 0.5em 1em;
+}
+
+.tasks-info .center {
+    text-align: center;
+    justify-content: center;
+}
+
 .task {
     display: flex;
     flex-direction: column;
@@ -76,28 +89,12 @@ mat-icon {
     padding: 0.5em 1em;
 }
 
-.tasks-info {
-    display: grid;
-    grid-template-columns: 2fr 6fr 2fr 2fr 2fr 1fr;
-    gap: 1em;
-    border-radius: 10px;
-    padding: 0em 0.5em;
-    margin: 0.3em 0;
-}
-
 .tasks-info div {
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: start;
 }
-
-.tasks-info .priority, .complete {
-    text-align: center;
-    justify-content: center;
-}
-
-
 
 .task-basic {
     display: grid;
