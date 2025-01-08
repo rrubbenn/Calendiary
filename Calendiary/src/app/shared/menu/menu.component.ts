@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { EditModalComponent } from '../../groups/group-edit-modal/edit-modal.component';
-import { DeleteModalComponent } from '../../groups/group-delete-modal/delete-modal.component';
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { GroupsComponent } from "../../groups/groups.component";
 
 
