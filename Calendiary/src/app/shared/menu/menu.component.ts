@@ -4,12 +4,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { EditModalComponent } from './group-edit-modal/edit-modal.component';
 import { DeleteModalComponent } from './group-delete-modal/delete-modal.component';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [ MatIconModule, MatMenuModule ],
+  imports: [ MatIconModule, MatMenuModule, RouterModule ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })

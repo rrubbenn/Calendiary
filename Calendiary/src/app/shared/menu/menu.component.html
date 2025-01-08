@@ -13,7 +13,7 @@
             <ul class="menu-group">
                 @for (group of groups; track group.id) {
                     <li class="menu-item"> 
-                        <a> {{ group.group }} </a> 
+                        <a [routerLink]="['/group', group.id]" class="white"> {{ group.group }} </a> 
                         <div class="icon"
                             (click)="$event.stopPropagation()" 
                             [matMenuTriggerFor]="menu"> 
@@ -33,7 +33,14 @@
                         </button>
                     </mat-menu>
                 }
-                
+                <li class="menu-item"> 
+                    <a href="" class="secondary medium"> 
+                        New Group 
+                    </a>
+                    <div>
+                        <mat-icon class="secondary"> add </mat-icon>
+                    </div>
+                </li>
             </ul>
         </li>
         <hr class="menu-divider">
