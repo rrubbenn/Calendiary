@@ -4,8 +4,8 @@ import { NgStyle } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
-import { EditModalComponent } from '../shared/menu/group-edit-modal/edit-modal.component';
-import { DeleteModalComponent } from '../shared/menu/group-delete-modal/delete-modal.component';
+import { EditModalComponent } from '../groups/group-edit-modal/edit-modal.component';
+import { DeleteModalComponent } from '../groups/group-delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-group',
