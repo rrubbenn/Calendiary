@@ -4,16 +4,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-delete-modal',
+  selector: 'app-task-delete-modal',
   standalone: true,
   imports: [ MatIconModule, MatFormFieldModule ],
-  templateUrl: './delete-modal.component.html',
-  styleUrl: './delete-modal.component.scss'
+  templateUrl: './task-delete-modal.component.html',
+  styleUrl: './task-delete-modal.component.scss'
 })
-export class DeleteModalComponent {
+export class TaskDeleteModalComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<DeleteModalComponent>,
+    public dialogRef: MatDialogRef<TaskDeleteModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string
   ) {}
 

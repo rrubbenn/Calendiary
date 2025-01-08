@@ -8,17 +8,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-edit-modal',
+  selector: 'app-task-edit-modal',
   standalone: true,
   imports: [ MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule  ],
-  templateUrl: './edit-modal.component.html',
-  styleUrl: './edit-modal.component.scss',
+  templateUrl: './task-edit-modal.component.html',
+  styleUrl: './task-edit-modal.component.scss',
   providers: [ {provide: DateAdapter, useClass: NativeDateAdapter}, {provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS}, ],
 })
-export class EditModalComponent {
+export class TaskEditModalComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<EditModalComponent>,
+    public dialogRef: MatDialogRef<TaskEditModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
