@@ -74,29 +74,6 @@
     padding: 1em 1em;
 }
 
-.container ul .menu-group .menu-item div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 0.5em;
-}
-
-.white {
-    color: white;
-}
-
-.secondary {
-    color: var(--secondary);
-}
-
-.mat-icon {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    vertical-align: middle;
-}
-
 .container ul .menu-divider {
     border: none;
     border-top: 1px solid #555;

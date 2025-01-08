@@ -1,0 +1,39 @@
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-item:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+.menu-item a {
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    padding: 1em 1em;
+}
+
+.menu-item div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5em;
+}
+
+.white {
+    color: white;
+}
+
+.secondary {
+    color: var(--secondary);
+}
+
+.mat-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    vertical-align: middle;
+}
