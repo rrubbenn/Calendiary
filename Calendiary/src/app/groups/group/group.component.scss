@@ -1,0 +1,55 @@
+.content {
+    width: 100%;
+    margin: 1em;
+}
+
+.group-header {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 60%;
+    color: white;
+    margin: 0rem 1rem;
+    padding: 0.5rem 1rem;
+    border: 0;
+    border-radius: 4px;
+    font-size: medium;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.start {
+    background-color: var(--secondary);
+}
+
+.start:hover {
+    background-color: var(--secondary-hover);
+}
+
+.tasks-info {
+    display: grid;
+    grid-template-columns: 2fr 6fr 2fr 2fr 2fr 1fr;
+    gap: 1em;
+    margin: 0.3em 0;
+    padding: 0.5em 1em;
+}
+
+.tasks-info div {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.tasks-info .center {
+    text-align: center;
+    justify-content: center;
+}
