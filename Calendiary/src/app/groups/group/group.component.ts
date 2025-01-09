@@ -16,5 +16,4 @@ export class GroupComponent {
     throw new Error('Method not implemented.');
   }
 
-  
 }

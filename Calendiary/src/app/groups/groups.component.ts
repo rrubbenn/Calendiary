@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { GroupAddModalComponent } from './group/group-add-modal/group-add-modal.component';
 import { GroupEditModalComponent } from './group/group-edit-modal/group-edit-modal.component';
 import { GroupDeleteModalComponent } from './group/group-delete-modal/group-delete-modal.component';
+import { GroupsService } from './groups.service';
 
 
 @Component({
@@ -17,35 +18,11 @@ import { GroupDeleteModalComponent } from './group/group-delete-modal/group-dele
 })
 export class GroupsComponent {
 
-  groups = [
-    {
-      id: 1,
-      group: 'Work',
-      description: 'Work-related to-dos: meetings, projects, deadlines, and important emails',
-    },
-    {
-      id: 2,
-      group: 'Shopping',
-      description: 'Daily shopping and household tasks',
-    },
-    {
-      id: 3,
-      group: 'Events',
-      description: 'Social activities and important events.',
-    },
-    {
-      id: 4,
-      group: 'Health',
-      description: 'Workouts, doctors appointments, meditation sessions',
-    },
-    {
-      id: 5,
-      group: 'Personal',
-      description: 'Hobbies and personal goals',
-    }
-  ];
+  private groupsService = inject(GroupsService);
+  groups = this.groupsService.allGroups();
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) {
+  }
 
   addGroup() {
 

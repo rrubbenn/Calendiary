@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
+import { ActivatedRoute, Router } from '@angular/router';
+import { TasksService } from './tasks.service';
+import { Task } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -8,48 +11,29 @@ import { TaskComponent } from "./task/task.component";
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.scss'
 })
-export class TasksComponent {
+export class TasksComponent implements OnInit {
 
-  tasks = [
-      {
-        id: 1,
-        group: 1,
-        name: 'Analysis Task',
-        description: 'Analyze the project requirements.',
-        date: new Date('2024-12-01').toLocaleDateString('en-US'),
-        priority: 'High'
-      },
-      {
-        id: 2,
-        group: 3,
-        name: 'Design User Interface',
-        description: 'Create UI prototypes for the project.',
-        date: new Date('2024-12-03').toLocaleDateString('en-US'),
-        priority: 'Moderate'
-      },
-      {
-        id: 3,
-        group: 4,
-        name: 'Integration Testing',
-        description: 'Perform integration tests with the system.',
-        date: new Date('2024-12-10').toLocaleDateString('en-US'),
-        priority: 'Low'
-      },
-      {
-        id: 4,
-        group: 1,
-        name: 'Backend Coding',
-        description: 'Develop the API for the application.',
-        date: new Date('2024-12-15').toLocaleDateString('en-US'),
-        priority: 'High'
-      },
-      {
-        id: 5,
-        group: 5,
-        name: 'Document Code',
-        description: 'Write documentation for the backend code.',
-        date: new Date('2024-10-04').toLocaleDateString('en-US'),
-        priority: 'Moderate'
-      }
-    ];
+  groupId: string | null = null;
+  tasks = signal<Task[]>([]);
+
+  private tasksService = inject(TasksService);
+
+  private route = inject(ActivatedRoute);  // ActivatedRoute to detect changes on the route
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.groupId = params.get('groupId');
+      this.updateTasks();
+    });
+  }
+
+  private updateTasks(): void {
+    if (this.groupId) {
+      const tasks = this.tasksService.allTasks();
+
+      const filteredTasks = tasks.filter(task => task.group === +this.groupId!);
+      this.tasks.set(filteredTasks); 
+    }
+  }
+
 }
