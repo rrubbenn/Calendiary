@@ -1,5 +1,24 @@
 @for (group of groups; track group.id) {
-    
+    <li class="menu-item"> 
+        <a [routerLink]="['/group']" class="white"> {{ group.group }} </a> 
+        <div class="icon"
+            (click)="$event.stopPropagation()" 
+            [matMenuTriggerFor]="menu"> 
+                <mat-icon style="color: var(--secondary);"> more_vert </mat-icon> 
+        </div>
+    </li>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editGroup(group.id)">
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+        </button>
+        <button mat-menu-item 
+                (click)="deleteGroup(group.id)" 
+                style="color: red">
+            <mat-icon style="color: red">delete</mat-icon>
+            <span>Delete</span>
+        </button>
+    </mat-menu>
 }
 <li class="menu-item"> 
     <a (click)="addGroup()" class="secondary medium"> 
