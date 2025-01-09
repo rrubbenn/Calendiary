@@ -42,25 +42,6 @@
     background-color: var(--secondary-hover);
 }
 
-.button .mat-icon {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    margin-right: 0.5rem;
-    color: inherit; 
-}
-
-
-.task {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--secondary);
-    border-radius: 10px;
-    margin: 0.3em 0;
-    padding: 0.5em 1em;
-}
-
 .tasks-info {
     display: grid;
     grid-template-columns: 2fr 6fr 2fr 2fr 2fr 1fr;
@@ -79,47 +60,4 @@
 .tasks-info .center {
     text-align: center;
     justify-content: center;
-}
-
-
-
-.task-basic {
-    display: grid;
-    grid-template-columns: 2fr 6fr 2fr 2fr 2fr 1fr;
-    gap: 1em;
-}
-
-.task-additional {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #f4f4f4;
-    border-top: 1px solid #ddd;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.task-basic div {
-    display: flex;
-    align-items: center;
-}
-
-.task-basic .priority {
-    font-size: small;
-    padding: 1em;
-    border: 0px;
-    border-radius: 10px;
-    color: white;
-    justify-content: center;
-}
-
-.task-basic .complete-button {
-    border: 0px;
-    border-radius: 10px;
-    // padding: 0.5em;
-    color: white;
-    background-color: var(--completed);
-}
-
-.task-basic .icon {
-    justify-content: end;
 }

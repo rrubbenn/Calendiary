@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { GroupEditModalComponent } from './group-edit-modal/group-edit-modal.component';
-import { GroupDeleteModalComponent } from './group-delete-modal/group-delete-modal.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
-import { GroupAddModalComponent } from './group-add-modal/group-add-modal.component';
+import { GroupAddModalComponent } from './group/group-add-modal/group-add-modal.component';
+import { GroupEditModalComponent } from './group/group-edit-modal/group-edit-modal.component';
+import { GroupDeleteModalComponent } from './group/group-delete-modal/group-delete-modal.component';
+
 
 @Component({
   selector: 'app-groups',

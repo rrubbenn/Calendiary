@@ -6,8 +6,8 @@ import { NgChartsModule } from 'ng2-charts';
 import { NgStyle } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
-import { TaskEditModalComponent } from '../group/task-edit-modal/task-edit-modal.component';
-import { TaskDeleteModalComponent } from '../group/task-delete-modal/task-delete-modal.component';
+import { TaskEditModalComponent } from '../tasks/task/task-edit-modal/task-edit-modal.component';
+import { TaskDeleteModalComponent } from '../tasks/task/task-delete-modal/task-delete-modal.component';
 
 
 @Component({

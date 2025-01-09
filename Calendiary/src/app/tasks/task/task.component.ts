@@ -1,63 +1,22 @@
-import { Component } from '@angular/core';
-import { MenuComponent } from '../shared/menu/menu.component';
-import { NgStyle } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, input } from '@angular/core';
 import { TaskEditModalComponent } from './task-edit-modal/task-edit-modal.component';
 import { TaskDeleteModalComponent } from './task-delete-modal/task-delete-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Task } from './task.model';
+import { NgStyle } from '@angular/common';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-group',
+  selector: 'app-task',
   standalone: true,
-  imports: [ MenuComponent, MatIconModule, MatMenuModule, NgStyle ],
-  templateUrl: './group.component.html',
-  styleUrl: './group.component.scss'
+  imports: [ NgStyle, MatIconModule, MatMenuModule ],
+  templateUrl: './task.component.html',
+  styleUrl: './task.component.scss'
 })
-export class GroupComponent {
+export class TaskComponent {
 
-  tasks = [
-    {
-      id: 1,
-      group: 'Development',
-      name: 'Analysis Task',
-      description: 'Analyze the project requirements.',
-      date: '2024-12-01',
-      priority: 'High'
-    },
-    {
-      id: 2,
-      group: 'Design',
-      name: 'Design User Interface',
-      description: 'Create UI prototypes for the project.',
-      date: '2024-12-03',
-      priority: 'Moderate'
-    },
-    {
-      id: 3,
-      group: 'Testing',
-      name: 'Integration Testing',
-      description: 'Perform integration tests with the system.',
-      date: '2024-12-10',
-      priority: 'Low'
-    },
-    {
-      id: 4,
-      group: 'Development',
-      name: 'Backend Coding',
-      description: 'Develop the API for the application.',
-      date: '2024-12-15',
-      priority: 'High'
-    },
-    {
-      id: 5,
-      group: 'Documentation',
-      name: 'Document Code',
-      description: 'Write documentation for the backend code.',
-      date: '2024-12-20',
-      priority: 'Moderate'
-    }
-  ];
+  task = input.required<Task>();
 
   constructor(private dialog: MatDialog) {}
 
