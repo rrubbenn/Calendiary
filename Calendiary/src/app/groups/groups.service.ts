@@ -4,7 +4,7 @@ import { Group } from "./group/group.model";
 @Injectable({ providedIn: 'root' })
 export class GroupsService {
 
-    private groups = signal([
+    private groups= signal<Group[]>([
         {
             groupId: 1,
             group: 'Work',
@@ -43,10 +43,19 @@ export class GroupsService {
     }
 
     deleteGroup(GroupData: {groupId: number}) {
-
         this.groups.update((oldGroups) => 
             oldGroups.filter(group => group.groupId !== GroupData.groupId)
         ); 
-        
     }
+
+    getEditData(groupId: number) {
+        console.log(this.groups().find( group => group.groupId === groupId ))
+        return this.groups().find( group => group.groupId === groupId );
+    } 
+
+    editGroup(GroupData: Group) {
+        this.groups.update((oldGroups) => 
+            oldGroups.map( group => group.groupId === GroupData.groupId ? { ...group, ...GroupData } : group)
+        )
+    } 
 }

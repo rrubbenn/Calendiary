@@ -23,31 +23,36 @@ export class GroupsComponent {
 
   constructor(private dialog: MatDialog) {}
 
-  addGroup() {
+  onAddGroup() {
     const dialogRef = this.dialog.open(GroupAddModalComponent, {
       width: '50%',
       height: '40%',
     });
   }
 
-  editGroup(groupId: number) {
+  onEditGroup(GroupData: { groupId: number }) {
+
+    const groupdata = this.groupsService.getEditData(GroupData.groupId);
+
     const dialogRef = this.dialog.open(GroupEditModalComponent, {
       width: '50%',
       height: '40%',
-      data: { id: groupId, name: 'Current Task Name' } 
+      data: { groupdata }
     });
   
     // Could be a nice upgrade for giving some feedback to the user when the function is completed or if it returns an error
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     console.log('Task updated:', result);
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result) {
+        result.groupId = GroupData.groupId;
+        this.groupsService.editGroup(result)
         
-    //   }
-    // });
+      }
+    });
   }
 
-  deleteGroup(groupId: number) {
+  onDeleteGroup(groupId: number) {
     const dialogRef = this.dialog.open(GroupDeleteModalComponent, {
       width: '40%',
       data: { groupId: groupId } 

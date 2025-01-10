@@ -4,20 +4,21 @@
         <mat-icon>close</mat-icon>
     </button>
 </div>
-<div class="dialog-content">
-    <form>
-        <mat-form-field appearance="fill">
-            <mat-label>Group Name</mat-label>
-            <input matInput placeholder="Enter task title" required>
-        </mat-form-field>
+<form #form="ngForm" (ngSubmit)="onSave(form)">
+    <div class="dialog-content">
 
-        <mat-form-field appearance="fill" class="description">
-            <mat-label>Description</mat-label>
-            <textarea matInput placeholder="Enter description" rows="4"></textarea>
-        </mat-form-field>
-    </form>
-</div>
-<div class="dialog-actions" >
-    <button mat-button class="cancel-button" (click)="onCancel()">Cancel</button>
-    <button mat-button class="save-button" (click)="onSave()">Save</button>
-</div>
+            <mat-form-field appearance="fill">
+                <mat-label>Group Name</mat-label>
+                <input matInput name="group" ngModel [(ngModel)]="group" placeholder="Enter task title" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="description">
+                <mat-label>Description</mat-label>
+                <textarea matInput name="description" ngModel [(ngModel)]="description" placeholder="Enter description" rows="4"></textarea>
+            </mat-form-field>
+    </div>
+    <div class="dialog-actions" >
+        <button mat-button class="cancel-button" type="button" (click)="onCancel()">Cancel</button>
+        <button mat-button class="save-button">Save</button>
+    </div>
+</form>

@@ -8,12 +8,12 @@
         </div>
     </li>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="editGroup(group.groupId)">
+        <button mat-menu-item (click)="onEditGroup( { groupId: group.groupId } )">
             <mat-icon>edit</mat-icon>
             <span>Edit</span>
         </button>
         <button mat-menu-item 
-                (click)="deleteGroup(group.groupId)" 
+                (click)="onDeleteGroup(group.groupId)" 
                 style="color: red">
             <mat-icon style="color: red">delete</mat-icon>
             <span>Delete</span>
@@ -21,7 +21,7 @@
     </mat-menu>
 }
 <li class="menu-item"> 
-    <a (click)="addGroup()" class="secondary medium"> 
+    <a (click)="onAddGroup()" class="secondary medium"> 
         New Group 
     </a>
     <div>

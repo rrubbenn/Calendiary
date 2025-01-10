@@ -3,8 +3,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { GroupsService } from '../../groups.service';
-import { ActivatedRoute } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-delete-modal',
@@ -16,8 +14,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class GroupDeleteModalComponent {
 
   private groupsService = inject(GroupsService);
-  private route = inject(ActivatedRoute);
-  paramMapSignal = toSignal(this.route.paramMap);
 
   groupId: { groupId: number };
 
