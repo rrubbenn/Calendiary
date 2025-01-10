@@ -28,11 +28,8 @@ export class GroupAddModalComponent {
   }
 
   onSave(form: NgForm): void {
-    console.log(form.form.value);
-    this.dialogRef.close(this.data);
-
     this.groupsService.addGroup(form.form.value);
-
+    this.dialogRef.close(this.data);
   }
-    
+
 }

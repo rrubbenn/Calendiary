@@ -40,6 +40,13 @@ export class GroupsService {
             ...GroupData,
         } 
         this.groups.update((oldGroups) => [...oldGroups, newGroup])
-        console.log(this.groups());
+    }
+
+    deleteGroup(GroupData: {groupId: number}) {
+
+        this.groups.update((oldGroups) => 
+            oldGroups.filter(group => group.groupId !== GroupData.groupId)
+        ); 
+        
     }
 }

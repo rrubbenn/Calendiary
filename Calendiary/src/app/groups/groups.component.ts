@@ -21,8 +21,7 @@ export class GroupsComponent {
   private groupsService = inject(GroupsService);
   groups = this.groupsService.allGroups;
 
-  constructor(private dialog: MatDialog) {
-  }
+  constructor(private dialog: MatDialog) {}
 
   addGroup() {
     const dialogRef = this.dialog.open(GroupAddModalComponent, {
@@ -32,26 +31,26 @@ export class GroupsComponent {
   }
 
   editGroup(groupId: number) {
-    console.log(groupId)
     const dialogRef = this.dialog.open(GroupEditModalComponent, {
       width: '50%',
       height: '40%',
       data: { id: groupId, name: 'Current Task Name' } 
     });
   
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Task updated:', result);
+    // Could be a nice upgrade for giving some feedback to the user when the function is completed or if it returns an error
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result) {
+    //     console.log('Task updated:', result);
         
-      }
-    });
+    //   }
+    // });
   }
 
   deleteGroup(groupId: number) {
-    console.log(groupId)
     const dialogRef = this.dialog.open(GroupDeleteModalComponent, {
       width: '40%',
-      data: { id: groupId, name: 'Current Task Name' } 
+      data: { groupId: groupId } 
     });
   
     dialogRef.afterClosed().subscribe(result => {
