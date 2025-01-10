@@ -19,24 +19,15 @@ import { GroupsService } from './groups.service';
 export class GroupsComponent {
 
   private groupsService = inject(GroupsService);
-  groups = this.groupsService.allGroups();
+  groups = this.groupsService.allGroups;
 
   constructor(private dialog: MatDialog) {
   }
 
   addGroup() {
-
     const dialogRef = this.dialog.open(GroupAddModalComponent, {
       width: '50%',
       height: '40%',
-      data: { name: 'Current Task Name' } 
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Task updated:', result);
-        
-      }
     });
   }
 

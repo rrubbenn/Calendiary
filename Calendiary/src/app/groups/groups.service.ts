@@ -1,4 +1,5 @@
 import { Injectable, signal } from "@angular/core";
+import { Group } from "./group/group.model";
 
 @Injectable({ providedIn: 'root' })
 export class GroupsService {
@@ -33,4 +34,12 @@ export class GroupsService {
     
     allGroups = this.groups.asReadonly();
 
+    addGroup(GroupData: {group: string, description: string}){
+        const newGroup: Group = {
+            groupId: Math.random(),
+            ...GroupData,
+        } 
+        this.groups.update((oldGroups) => [...oldGroups, newGroup])
+        console.log(this.groups());
+    }
 }

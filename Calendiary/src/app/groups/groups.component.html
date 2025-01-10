@@ -1,4 +1,4 @@
-@for (group of groups; track group.groupId) {
+@for (group of groups(); track group.groupId) {
     <li class="menu-item"> 
         <a [routerLink]="['/group', group.groupId]" class="white"> {{ group.group }} </a> 
         <div class="icon"

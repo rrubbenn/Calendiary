@@ -42,23 +42,21 @@
 }
 
 form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0 1em;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: hidden;
 }
 
-form > .time-fields {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1em; 
-}
-
-form > .description {
-    grid-column: span 2;
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: hidden;
 }
 
 .dialog-actions {
-    height: 15%;
+    height: 20%;
     padding: 0 2em;
     display: flex;
     justify-content: flex-end;
