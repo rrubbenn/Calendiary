@@ -58,4 +58,8 @@ export class GroupsService {
             oldGroups.map( group => group.groupId === GroupData.groupId ? { ...group, ...GroupData } : group)
         )
     } 
+
+    getGroupData(groupId: number | undefined) {
+        return this.groups().find( group => group.groupId === groupId );
+    }
 }

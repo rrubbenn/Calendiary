@@ -9,7 +9,8 @@ export class TasksService {
             group: 1,
             name: 'Analysis Task',
             description: 'Analyze the project requirements.',
-            date: new Date('2024-12-01').toLocaleDateString('en-US'),
+            startDate: new Date('2024-12-01').toLocaleDateString('en-US'),
+            endDate: new Date('2024-12-04').toLocaleDateString('en-US'),
             priority: 'High'
         },
         {
@@ -17,7 +18,8 @@ export class TasksService {
             group: 3,
             name: 'Design User Interface',
             description: 'Create UI prototypes for the project.',
-            date: new Date('2024-12-03').toLocaleDateString('en-US'),
+            startDate: new Date('2024-12-01').toLocaleDateString('en-US'),
+            endDate: new Date('2024-12-03').toLocaleDateString('en-US'),
             priority: 'Moderate'
         },
         {
@@ -25,7 +27,8 @@ export class TasksService {
             group: 4,
             name: 'Integration Testing',
             description: 'Perform integration tests with the system.',
-            date: new Date('2024-12-10').toLocaleDateString('en-US'),
+            startDate: new Date('2024-12-01').toLocaleDateString('en-US'),
+            endDate: new Date('2024-12-10').toLocaleDateString('en-US'),
             priority: 'Low'
         },
         {
@@ -33,7 +36,8 @@ export class TasksService {
             group: 1,
             name: 'Backend Coding',
             description: 'Develop the API for the application.',
-            date: new Date('2024-12-15').toLocaleDateString('en-US'),
+            startDate: new Date('2024-12-01').toLocaleDateString('en-US'),
+            endDate: new Date('2024-12-15').toLocaleDateString('en-US'),
             priority: 'High'
         },
         {
@@ -41,7 +45,8 @@ export class TasksService {
             group: 5,
             name: 'Document Code',
             description: 'Write documentation for the backend code.',
-            date: new Date('2024-10-04').toLocaleDateString('en-US'),
+            startDate: new Date('2024-12-01').toLocaleDateString('en-US'),
+            endDate: new Date('2024-10-04').toLocaleDateString('en-US'),
             priority: 'Moderate'
         }
     ]);

@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { TasksComponent } from "../../tasks/tasks.component";
+import { GroupsService } from '../groups.service';
+import { ActivatedRoute } from '@angular/router';
+import { Group } from './group.model';
 
 @Component({
   selector: 'app-group',
@@ -10,7 +13,21 @@ import { TasksComponent } from "../../tasks/tasks.component";
   templateUrl: './group.component.html',
   styleUrl: './group.component.scss'
 })
-export class GroupComponent {
+export class GroupComponent implements OnInit {
+  
+  groupId!: number;
+  groupData: Group | undefined;
+  private groupsService = inject(GroupsService);
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.groupId = parseInt(params['groupId']);
+      this.groupData = this.groupsService.getGroupData(this.groupId)
+    });
+  }
+
 
   onAddTask($event: MouseEvent) {
     throw new Error('Method not implemented.');

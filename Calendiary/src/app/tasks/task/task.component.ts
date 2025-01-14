@@ -75,18 +75,18 @@ export class TaskComponent {
       });
     }
   
-    deleteTask(taskId: number) {
-      console.log(taskId)
-      const dialogRef = this.dialog.open(TaskDeleteModalComponent, {
-        width: '40%',
-        data: { id: taskId, name: 'Current Task Name' } 
-      });
-    
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          console.log('Task deleted:', result);
-          
-        }
-      });
-    }
+  deleteTask(taskId: number) {
+    console.log(taskId)
+    const dialogRef = this.dialog.open(TaskDeleteModalComponent, {
+      width: '40%',
+      data: { id: taskId, name: 'Current Task Name' } 
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Task deleted:', result);
+        
+      }
+    });
+  }
 }
