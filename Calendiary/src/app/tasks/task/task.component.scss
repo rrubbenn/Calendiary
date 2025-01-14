@@ -19,8 +19,8 @@
 
 .task-basic {
     display: grid;
-    grid-template-columns: 6fr 2fr 2fr 2fr 2fr 1fr;
-    gap: 1em;
+    grid-template-columns: 28% 10% 10% 10% 10% 10% 10% 5%;
+    gap: 1%;
 }
 
 .task-additional {
@@ -56,4 +56,9 @@
 
 .task-basic .icon {
     justify-content: end;
+}
+
+.center {
+    text-align: center;
+    justify-content: center;
 }
