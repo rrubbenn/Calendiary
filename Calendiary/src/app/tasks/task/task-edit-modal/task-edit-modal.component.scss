@@ -47,12 +47,6 @@ form {
     gap: 0 1em;  /* Espacio entre los elementos */
 }
 
-form > .time-fields {
-    display: grid;
-    grid-template-columns: 1fr 1fr;  /* Dos columnas en esta fila para las horas */
-    gap: 1em;  /* Espacio entre las columnas de las horas */
-}
-
 form > .description {
     grid-column: span 2;  /* Hace que el campo de descripción ocupe las 2 columnas */
 }

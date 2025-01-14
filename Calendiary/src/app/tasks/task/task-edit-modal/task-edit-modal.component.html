@@ -12,19 +12,19 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
+            <mat-label>Priority</mat-label>
+            <mat-select>
+                <mat-option value="high">High</mat-option>
+                <mat-option value="medium">Moderate</mat-option>
+                <mat-option value="low">Low</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
             <mat-label>Start Date</mat-label>
             <input matInput [matDatepicker]="startDate" placeholder="Choose start date" required>
             <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
             <mat-datepicker #startDate></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Group</mat-label>
-            <mat-select required>
-                <mat-option value="group1">Group 1</mat-option>
-                <mat-option value="group2">Group 2</mat-option>
-                <mat-option value="group3">Group 3</mat-option>
-            </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
@@ -35,25 +35,15 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-            <mat-label>Priority</mat-label>
-            <mat-select>
-                <mat-option value="high">High</mat-option>
-                <mat-option value="medium">Moderate</mat-option>
-                <mat-option value="low">Low</mat-option>
-            </mat-select>
+            <mat-label>Start Hour</mat-label>
+            <input matInput type="time" placeholder="Select start time" required>
         </mat-form-field>
 
-        <div class="time-fields">
-            <mat-form-field appearance="fill">
-                <mat-label>Start Hour</mat-label>
-                <input matInput type="time" placeholder="Select start time" required>
-            </mat-form-field>
-    
-            <mat-form-field appearance="fill">
-                <mat-label>Finish Hour</mat-label>
-                <input matInput type="time" placeholder="Select finish time" required>
-            </mat-form-field>
-        </div>
+        <mat-form-field appearance="fill">
+            <mat-label>Finish Hour</mat-label>
+            <input matInput type="time" placeholder="Select finish time" required>
+        </mat-form-field>
+
 
         <mat-form-field appearance="fill" class="description">
             <mat-label>Description</mat-label>
