@@ -15,7 +15,7 @@
                 </mat-icon> 
         </div>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="editTask(task().id)">
+            <button mat-menu-item (click)="editTask( { taskId: task().id } )">
                 <mat-icon>edit</mat-icon>
                 <span>Edit</span>
             </button>

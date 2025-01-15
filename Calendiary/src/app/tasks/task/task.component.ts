@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { TaskEditModalComponent } from './task-edit-modal/task-edit-modal.component';
 import { TaskDeleteModalComponent } from './task-delete-modal/task-delete-modal.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,6 +6,7 @@ import { Task } from './task.model';
 import { NgStyle } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { TasksService } from '../tasks.service';
 
 @Component({
   selector: 'app-task',
@@ -17,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class TaskComponent {
 
   task = input.required<Task>();
+  private tasksService = inject(TasksService);
 
   constructor(private dialog: MatDialog) {}
 
@@ -59,18 +61,19 @@ export class TaskComponent {
     });
   }
 
-  editTask(taskId: number) {
-      console.log(taskId)
+  editTask(TaskData: { taskId: number; }) {
+
+      const taskdata = this.tasksService.getTaskData(TaskData.taskId);
       const dialogRef = this.dialog.open(TaskEditModalComponent, {
         width: '70%',
         height: '70%',
-        data: { id: taskId, name: 'Current Task Name' } 
+        data: { taskdata } 
       });
     
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          console.log('Task updated:', result);
-          
+          result.id = TaskData.taskId;
+          this.tasksService.editTask(result)
         }
       });
     }

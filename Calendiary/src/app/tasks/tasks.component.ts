@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
 import { ActivatedRoute, Router } from '@angular/router';
 import { TasksService } from './tasks.service';
@@ -13,27 +13,26 @@ import { Task } from './task/task.model';
 })
 export class TasksComponent implements OnInit {
 
-  groupId: string | null = null;
-  tasks = signal<Task[]>([]);
+  groupId = signal<number | null>(null);
 
   private tasksService = inject(TasksService);
+  tasks = this.tasksService.allTasks();
 
-  private route = inject(ActivatedRoute);  // ActivatedRoute to detect changes on the route
+  filteredTasks = computed(() => 
+    this.tasks().filter(task => task.group === this.groupId())
+  )
+
+  private route = inject(ActivatedRoute);
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.groupId = params.get('groupId');
-      this.updateTasks();
+      const newGroupId = params.get('groupId');
+      const numericGroupId = newGroupId ? Number(newGroupId) : null;
+
+      if (numericGroupId !== this.groupId()) {
+        this.groupId.set(numericGroupId);
+      }
     });
-  }
-
-  private updateTasks(): void {
-    if (this.groupId) {
-      const tasks = this.tasksService.allTasks();
-
-      const filteredTasks = tasks.filter(task => task.group === +this.groupId!);
-      this.tasks.set(filteredTasks); 
-    }
   }
 
 }

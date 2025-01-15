@@ -26,11 +26,21 @@
     }
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: hidden; 
+}
+
 .dialog-content {
-    height: 70%;
+    height: 100%;
     padding: 0 2em;
     font-size: 14px;
     overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* Dos columnas de tamaño igual */
+    gap: 0 1em;  /* Espacio entre los elementos */
 
     .full-width {
         width: 100%;
@@ -41,13 +51,7 @@
     }
 }
 
-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);  /* Dos columnas de tamaño igual */
-    gap: 0 1em;  /* Espacio entre los elementos */
-}
-
-form > .description {
+.dialog-content > .description {
     grid-column: span 2;  /* Hace que el campo de descripción ocupe las 2 columnas */
 }
 

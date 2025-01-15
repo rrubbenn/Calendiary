@@ -1,9 +1,10 @@
-import { Injectable, signal } from "@angular/core";
+import { computed, Injectable, signal } from "@angular/core";
+import { Task } from "./task/task.model";
 @Injectable({ providedIn: 'root' })
 
 export class TasksService {
 
-    private tasks = signal([
+    private tasks = signal<Task[]>([
         {
             id: 1,
             group: 1,
@@ -60,5 +61,15 @@ export class TasksService {
             priority: 'Moderate'
         }
     ]);
-    allTasks = this.tasks.asReadonly();
+    allTasks = computed(() => this.tasks);
+
+    getTaskData(taskId: number) {
+        return this.tasks().find( task => task.id === taskId );
+    } 
+
+    editTask(TaskData: Task) {
+        this.tasks.update((oldTasks) => 
+            oldTasks.map( task => task.id === TaskData.id ? { ...task, ...TaskData } : task)
+        )
+    }
 }
