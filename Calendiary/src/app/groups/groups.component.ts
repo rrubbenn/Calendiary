@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { GroupAddModalComponent } from './group/group-add-modal/group-add-modal.component';
 import { GroupEditModalComponent } from './group/group-edit-modal/group-edit-modal.component';
 import { GroupDeleteModalComponent } from './group/group-delete-modal/group-delete-modal.component';
-import { GroupsService } from './groups.service';
+import { GroupsService } from '../services/groups.service';
 
 
 @Component({

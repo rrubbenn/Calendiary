@@ -87,4 +87,9 @@ export class TasksService {
             )
         );
     }
+
+    addTask(TaskData: Task) {
+        this.tasks.update((oldTasks) => [...oldTasks, TaskData])
+        console.log(this.tasks());
+    }
 }

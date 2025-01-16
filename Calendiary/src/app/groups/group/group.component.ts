@@ -2,9 +2,10 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { TasksComponent } from "../../tasks/tasks.component";
-import { GroupsService } from '../groups.service';
+import { GroupsService } from '../../services/groups.service';
 import { ActivatedRoute } from '@angular/router';
 import { Group } from './group.model';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-group',
@@ -18,6 +19,7 @@ export class GroupComponent implements OnInit {
   groupId!: number;
   groupData: Group | undefined;
   private groupsService = inject(GroupsService);
+  private modalsService = inject(ModalService)
 
   constructor(private route: ActivatedRoute) {}
 
@@ -29,8 +31,8 @@ export class GroupComponent implements OnInit {
   }
 
 
-  onAddTask($event: MouseEvent) {
-    throw new Error('Method not implemented.');
+  onAddTask() {
+    this.modalsService.openAddTaskModal(this.groupId);
   }
 
 }

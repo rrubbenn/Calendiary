@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { GroupsService } from '../../groups.service';
+import { GroupsService } from '../../../services/groups.service';
 import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({

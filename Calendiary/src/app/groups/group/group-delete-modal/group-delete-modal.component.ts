@@ -2,7 +2,7 @@ import { Component, computed, inject, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { GroupsService } from '../../groups.service';
+import { GroupsService } from '../../../services/groups.service';
 
 @Component({
   selector: 'app-delete-modal',

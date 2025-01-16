@@ -44,18 +44,11 @@ export class TaskComponent {
     }
   }
 
-  addTask() {
+  addTask(groupId: number) {
 
-    const dialogRef = this.dialog.open(TaskEditModalComponent, {
-      width: '70%',
-      height: '70%',
-      data: { name: 'Current Task Name' } 
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
+    this.modalService.openAddTaskModal(groupId).afterClosed().subscribe((result) => {
       if (result) {
-        console.log('Task deleted:', result);
-        
+        console.log('Tarea editada:', result);
       }
     });
   }

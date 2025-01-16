@@ -1,5 +1,5 @@
 import { Injectable, signal } from "@angular/core";
-import { Group } from "./group/group.model";
+import { Group } from "../groups/group/group.model";
 
 @Injectable({ providedIn: 'root' })
 export class GroupsService {
