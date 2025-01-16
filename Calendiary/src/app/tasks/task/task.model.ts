@@ -3,6 +3,9 @@ export interface Task {
     group: number,
     name: string,
     description: string,
-    date: string,
+    startHour: string, 
+    endHour: string,
+    startDate: string,
+    endDate: string,
     priority: string
 }

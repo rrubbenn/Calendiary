@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { TaskEditModalComponent } from './task-edit-modal/task-edit-modal.component';
 import { TaskDeleteModalComponent } from './task-delete-modal/task-delete-modal.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,6 +6,7 @@ import { Task } from './task.model';
 import { NgStyle } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-task',
@@ -18,7 +19,7 @@ export class TaskComponent {
 
   task = input.required<Task>();
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private modalService: ModalService) {}
 
   getColor(priority: string) {
     switch(priority) {
@@ -43,50 +44,27 @@ export class TaskComponent {
     }
   }
 
-  addTask() {
-
-    const dialogRef = this.dialog.open(TaskEditModalComponent, {
-      width: '70%',
-      height: '70%',
-      data: { name: 'Current Task Name' } 
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
+  addTask(groupId: number) {
+    this.modalService.openAddTaskModal(groupId).afterClosed().subscribe((result) => {
       if (result) {
-        console.log('Task deleted:', result);
         
       }
     });
   }
 
   editTask(taskId: number) {
-      console.log(taskId)
-      const dialogRef = this.dialog.open(TaskEditModalComponent, {
-        width: '70%',
-        height: '70%',
-        data: { id: taskId, name: 'Current Task Name' } 
-      });
-    
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          console.log('Task updated:', result);
-          
-        }
-      });
-    }
+    this.modalService.openEditTaskModal(taskId).afterClosed().subscribe((result) => {
+      if (result) {
+        
+      }
+    });
+  }
   
-    deleteTask(taskId: number) {
-      console.log(taskId)
-      const dialogRef = this.dialog.open(TaskDeleteModalComponent, {
-        width: '40%',
-        data: { id: taskId, name: 'Current Task Name' } 
-      });
-    
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          console.log('Task deleted:', result);
-          
-        }
-      });
-    }
+  deleteTask(taskId: number) {
+    this.modalService.openDeleteTaskModal(taskId).afterClosed().subscribe((result) => {
+      if (result) {
+        
+      }
+    });
+  }
 }
