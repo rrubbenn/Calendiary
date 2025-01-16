@@ -90,6 +90,11 @@ export class TasksService {
 
     addTask(TaskData: Task) {
         this.tasks.update((oldTasks) => [...oldTasks, TaskData])
-        console.log(this.tasks());
+    }
+
+    deleteTask(taskId: number) {
+        this.tasks.update((oldTasks) => 
+            oldTasks.filter(task => task.id !== taskId)
+        ); 
     }
 }

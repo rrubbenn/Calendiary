@@ -45,10 +45,9 @@ export class TaskComponent {
   }
 
   addTask(groupId: number) {
-
     this.modalService.openAddTaskModal(groupId).afterClosed().subscribe((result) => {
       if (result) {
-        console.log('Tarea editada:', result);
+        
       }
     });
   }
@@ -56,21 +55,14 @@ export class TaskComponent {
   editTask(taskId: number) {
     this.modalService.openEditTaskModal(taskId).afterClosed().subscribe((result) => {
       if (result) {
-        console.log('Tarea editada:', result);
+        
       }
     });
   }
   
   deleteTask(taskId: number) {
-    console.log(taskId)
-    const dialogRef = this.dialog.open(TaskDeleteModalComponent, {
-      width: '40%',
-      data: { id: taskId, name: 'Current Task Name' } 
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
+    this.modalService.openDeleteTaskModal(taskId).afterClosed().subscribe((result) => {
       if (result) {
-        console.log('Task deleted:', result);
         
       }
     });
