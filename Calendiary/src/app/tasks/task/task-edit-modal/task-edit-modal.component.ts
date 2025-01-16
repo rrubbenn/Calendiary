@@ -8,14 +8,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Task } from '../task.model';
+import { TasksService } from '../../tasks.service';
 
 @Component({
   selector: 'app-task-edit-modal',
   standalone: true,
-  imports: [ FormsModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule  ],
+  imports: [ FormsModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatNativeDateModule ],
   templateUrl: './task-edit-modal.component.html',
-  styleUrl: './task-edit-modal.component.scss',
-  providers: [ {provide: DateAdapter, useClass: NativeDateAdapter}, {provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS}, ],
+  styleUrls: ['./task-edit-modal.component.scss'],
+  providers: [ { provide: DateAdapter, useClass: NativeDateAdapter }, { provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS } ],
 })
 export class TaskEditModalComponent {
 
@@ -29,30 +30,42 @@ export class TaskEditModalComponent {
   taskendDate: Date;
   priority: string;
 
-  testDate = new Date();
-
   constructor(
     public dialogRef: MatDialogRef<TaskEditModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { taskdata: Task; }
+    @Inject(MAT_DIALOG_DATA) public data: { taskId: number },
+    private tasksService: TasksService
   ) {
-    this.id = data.taskdata.id;
-    this.group = data.taskdata.group;
-    this.name = data.taskdata.name;
-    this.description = data.taskdata.description;
-    this.startHour = data.taskdata.startHour;
-    this.endHour = data.taskdata.endHour;
-    this.taskstartDate = new Date(data.taskdata.startDate);
-    this.taskendDate = new Date(data.taskdata.endDate);
-    this.priority = data.taskdata.priority;
+    this.id = data.taskId;
+    const taskData = this.tasksService.getTaskData(this.id);
+    console.log(taskData);
+
+    this.id = taskData.id;
+    this.group = taskData.group;
+    this.name = taskData.name;
+    this.description = taskData.description;
+    this.startHour = taskData.startHour;
+    this.endHour = taskData.endHour;
+    this.taskstartDate = new Date(taskData.startDate);
+    this.taskendDate = new Date(taskData.endDate);
+    this.priority = taskData.priority;
   }
 
   onCancel(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(); 
   }
 
   onSave(form: NgForm): void {
-    form.form.value.startDate = form.form.value.startDate.toLocaleDateString('en-US');
-    form.form.value.endDate = form.form.value.endDate.toLocaleDateString('en-US');
-    this.dialogRef.close(form.form.value);
+    const updatedTask = {
+      ...form.form.value,
+      id: this.id 
+    };
+
+    updatedTask.startDate = updatedTask.startDate.toLocaleDateString('en-US');
+    updatedTask.endDate = updatedTask.endDate.toLocaleDateString('en-US');
+
+    this.tasksService.editTask(updatedTask);
+
+    this.dialogRef.close(updatedTask);
   }
 }
+

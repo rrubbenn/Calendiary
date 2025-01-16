@@ -6,7 +6,7 @@ import { Task } from './task.model';
 import { NgStyle } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { TasksService } from '../tasks.service';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-task',
@@ -18,9 +18,8 @@ import { TasksService } from '../tasks.service';
 export class TaskComponent {
 
   task = input.required<Task>();
-  private tasksService = inject(TasksService);
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private modalService: ModalService) {}
 
   getColor(priority: string) {
     switch(priority) {
@@ -61,22 +60,13 @@ export class TaskComponent {
     });
   }
 
-  editTask(TaskData: { taskId: number; }) {
-
-      const taskdata = this.tasksService.getTaskData(TaskData.taskId);
-      const dialogRef = this.dialog.open(TaskEditModalComponent, {
-        width: '70%',
-        height: '70%',
-        data: { taskdata } 
-      });
-    
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          result.id = TaskData.taskId;
-          this.tasksService.editTask(result)
-        }
-      });
-    }
+  editTask(taskId: number) {
+    this.modalService.openEditTaskModal(taskId).afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Tarea editada:', result);
+      }
+    });
+  }
   
   deleteTask(taskId: number) {
     console.log(taskId)

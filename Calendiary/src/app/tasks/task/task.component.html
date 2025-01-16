@@ -15,12 +15,12 @@
                 </mat-icon> 
         </div>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="editTask( { taskId: task().id } )">
+            <button mat-menu-item (click)="editTask( task().id )">
                 <mat-icon>edit</mat-icon>
                 <span>Edit</span>
             </button>
             <button mat-menu-item 
-                    (click)="deleteTask(task().id)" 
+                    (click)="deleteTask( task().id )" 
                     style="color: red">
                 <mat-icon style="color: red">delete</mat-icon>
                 <span>Delete</span>
