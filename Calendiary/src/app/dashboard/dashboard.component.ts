@@ -1,14 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MenuComponent } from "../shared/menu/menu.component";
 import { MatIconModule } from '@angular/material/icon';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { NgStyle } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatDialog } from '@angular/material/dialog';
-import { TaskEditModalComponent } from '../tasks/task/task-edit-modal/task-edit-modal.component';
-import { TaskDeleteModalComponent } from '../tasks/task/task-delete-modal/task-delete-modal.component';
-
+import { TasksService } from '../tasks/tasks.service';
+import { GroupsService } from '../services/groups.service';
+import { ModalService } from '../services/modal.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,49 +17,6 @@ import { TaskDeleteModalComponent } from '../tasks/task/task-delete-modal/task-d
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-
-  tasks = [
-    {
-      id: 1,
-      group: 'Development',
-      name: 'Analysis Task',
-      description: 'Analyze the project requirements.',
-      date: '2024-12-01',
-      priority: 'High'
-    },
-    {
-      id: 2,
-      group: 'Design',
-      name: 'Design User Interface',
-      description: 'Create UI prototypes for the project.',
-      date: '2024-12-03',
-      priority: 'Moderate'
-    },
-    {
-      id: 3,
-      group: 'Testing',
-      name: 'Integration Testing',
-      description: 'Perform integration tests with the system.',
-      date: '2024-12-10',
-      priority: 'Low'
-    },
-    {
-      id: 4,
-      group: 'Development',
-      name: 'Backend Coding',
-      description: 'Develop the API for the application.',
-      date: '2024-12-15',
-      priority: 'High'
-    },
-    {
-      id: 5,
-      group: 'Documentation',
-      name: 'Document Code',
-      description: 'Write documentation for the backend code.',
-      date: '2024-12-20',
-      priority: 'Moderate'
-    }
-  ];
 
   public charts = [
     {
@@ -146,34 +102,32 @@ export class DashboardComponent {
     }
   }
 
-  constructor(private dialog: MatDialog) {}
+  constructor() {}
+
+  private modalService = inject(ModalService);
+  
+  private tasksService = inject(TasksService);
+  tasks = this.tasksService.allTasks();
+
+  private groupService = inject(GroupsService);
+  groups = this.groupService.allGroups();
+
+  changeIdforName (groupId: number) {
+    const group = this.groups.find(group => group.groupId === groupId);
+    return group?.group;
+  }
 
   editTask(taskId: number) {
-    console.log(taskId)
-    const dialogRef = this.dialog.open(TaskEditModalComponent, {
-      width: '70%',
-      height: '70%',
-      data: { id: taskId, name: 'Current Task Name' } 
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
+    this.modalService.openEditTaskModal(taskId).afterClosed().subscribe((result) => {
       if (result) {
-        console.log('Task updated:', result);
         
       }
     });
   }
 
   deleteTask(taskId: number) {
-    console.log(taskId)
-    const dialogRef = this.dialog.open(TaskDeleteModalComponent, {
-      width: '40%',
-      data: { id: taskId, name: 'Current Task Name' } 
-    });
-  
-    dialogRef.afterClosed().subscribe(result => {
+    this.modalService.openDeleteTaskModal(taskId).afterClosed().subscribe((result) => {
       if (result) {
-        console.log('Task deleted:', result);
         
       }
     });
