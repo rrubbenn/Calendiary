@@ -1,7 +1,4 @@
-import { Component, inject, input } from '@angular/core';
-import { TaskEditModalComponent } from './task-edit-modal/task-edit-modal.component';
-import { TaskDeleteModalComponent } from './task-delete-modal/task-delete-modal.component';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, input } from '@angular/core';
 import { Task } from './task.model';
 import { NgStyle } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
@@ -19,9 +16,9 @@ export class TaskComponent {
 
   task = input.required<Task>();
 
-  constructor(private dialog: MatDialog, private modalService: ModalService) {}
+  constructor(private modalService: ModalService) {}
 
-  getColor(priority: string) {
+  getPriorityColor(priority: string) {
     switch(priority) {
       case 'High':
         return 'var(--high-priority)'
@@ -29,6 +26,19 @@ export class TaskComponent {
         return 'var(--moderate-priority)'
       case 'Low':
         return 'var(--low-priority)'
+      default:
+        return ''
+    }
+  }
+
+  getStatusColor(status: string) {
+    switch(status) {
+      case 'Completed':
+        return 'var(--completed)'
+      case 'In Progress':
+        return 'var(--in-progress)'
+      case 'Not Started':
+        return 'var(--not-started)'
       default:
         return ''
     }
