@@ -65,6 +65,7 @@ export class TasksService {
         },
     ]);
     allTasks = computed(() => this.tasks);
+    notCompletedTasks = computed(() => this.tasks().filter(task => task.status !== 'Completed'))
 
     getTaskData(taskId: number) {
         console.log(taskId);

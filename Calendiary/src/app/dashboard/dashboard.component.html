@@ -51,7 +51,7 @@
             <div> </div>
         </div>
         <div class="tasks-content">
-            @for(task of tasks(); track task.id) {
+            @for(task of tasks; track task.id) {
                 <div class="task">
                     <div class="task-basic" (click)="showDescription(task.id)">
                         <div> {{ changeIdforName(task.group) }} </div>
