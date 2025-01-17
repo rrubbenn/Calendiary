@@ -64,7 +64,10 @@ export class TasksService {
         status: 'Not Started'
         },
     ]);
-    allTasks = computed(() => this.tasks);
+    allTasks = this.tasks;
+    completedTasks = computed(() => this.tasks().filter(task => task.status === 'Completed'))
+    inProgressTasks = computed(() => this.tasks().filter(task => task.status === 'In Progress'))
+    notStartedTasks = computed(() => this.tasks().filter(task => task.status === 'Not Started'))
     notCompletedTasks = computed(() => this.tasks().filter(task => task.status !== 'Completed'))
 
     getTaskData(taskId: number) {

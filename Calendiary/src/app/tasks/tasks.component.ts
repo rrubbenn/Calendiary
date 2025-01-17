@@ -19,7 +19,7 @@ export class TasksComponent implements OnInit {
   tasks = this.tasksService.allTasks();
 
   filteredTasks = computed(() => 
-    this.tasks().filter(task => task.group === this.groupId())
+    this.tasks.filter(task => task.group === this.groupId())
   )
 
   private route = inject(ActivatedRoute);

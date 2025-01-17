@@ -17,12 +17,23 @@ import { ModalService } from '../services/modal.service';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-
+  
+  private modalService = inject(ModalService);
+  private groupService = inject(GroupsService);
+  private tasksService = inject(TasksService);
+  
+  allTasksCount = this.tasksService.allTasks().length;
+  inProgressTasksCount = this.tasksService.inProgressTasks().length;
+  completedTasksCount = this.tasksService.completedTasks().length;
+  notStartedTasksCount = this.tasksService.notStartedTasks().length;
+  tasks = this.tasksService.notCompletedTasks;
+  groups = this.groupService.allGroups();
+  
   public charts = [
     {
-      completedTasks: 66,
-      allTasks: 133,
-      percentage: this.calculatePercentage(66, 133),
+      tasks: this.completedTasksCount,
+      allTasks: this.allTasksCount,
+      percentage: this.calculatePercentage(this.completedTasksCount, this.allTasksCount),
       backgroundColor: ['#36bd7c', '#B0B0B0'],
       hoverBackgroundColor: ['#28a745', '#9e9e9e'],
       hoverBorderWidth: 0,
@@ -31,9 +42,9 @@ export class DashboardComponent {
       class: 'completed'
     },
     {
-      completedTasks: 23,
-      allTasks: 133,
-      percentage: this.calculatePercentage(23, 133),
+      tasks: this.inProgressTasksCount,
+      allTasks: this.allTasksCount,
+      percentage: this.calculatePercentage(this.inProgressTasksCount, this.allTasksCount),
       backgroundColor: ['#004aad', '#B0B0B0'],
       hoverBackgroundColor: ['#007bff', '#9e9e9e'],
       hoverBorderWidth: 0,
@@ -42,26 +53,15 @@ export class DashboardComponent {
       class: 'in-progress'
     },
     {
-      completedTasks: 40,
-      allTasks: 133,
-      percentage: this.calculatePercentage(40, 133),
+      tasks: this.notStartedTasksCount,
+      allTasks: this.allTasksCount,
+      percentage: this.calculatePercentage(this.notStartedTasksCount, this.allTasksCount),
       backgroundColor: ['#f39c12', '#B0B0B0'],
       hoverBackgroundColor: ['#f1c40f', '#9e9e9e'],
       hoverBorderWidth: 0,
       borderWidth: 0,
       title: 'Not Started',
       class: 'not-started'
-    },
-    {
-      completedTasks: 13,
-      allTasks: 133,
-      percentage: this.calculatePercentage(13, 133),
-      backgroundColor: ['#1e90ff', '#B0B0B0'],
-      hoverBackgroundColor: ['#4682b4', '#9e9e9e'],
-      hoverBorderWidth: 0,
-      borderWidth: 0,
-      title: 'Overall',
-      class: 'overall'
     }
   ];
 
@@ -114,16 +114,6 @@ export class DashboardComponent {
       this.visibleTaskId = taskId;
     }
   }
-
-  constructor() {}
-
-  private modalService = inject(ModalService);
-  
-  private tasksService = inject(TasksService);
-  tasks = this.tasksService.notCompletedTasks;
-
-  private groupService = inject(GroupsService);
-  groups = this.groupService.allGroups();
 
   changeIdforName (groupId: number) {
     const group = this.groups.find(group => group.groupId === groupId);
