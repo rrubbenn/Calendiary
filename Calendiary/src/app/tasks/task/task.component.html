@@ -1,12 +1,10 @@
 <div class="task">
     <div class="task-basic" (click)="showDescription(task().id)">
         <div> {{ task().name }} </div>
-        <div class="center"> {{ task().startHour }} </div>
-        <div class="center"> {{ task().endHour }} </div>
         <div class="center"> {{ task().startDate }} </div>
         <div class="center"> {{ task().endDate }} </div>
-        <div class="priority" [ngStyle]="{ backgroundColor: getColor(task().priority) }"> {{ task().priority }} </div>
-        <button class="complete-button"> Complete </button>
+        <div class="priority" [ngStyle]="{ color: getPriorityColor(task().priority) }"> {{ task().priority }} </div>
+        <div class="priority" [ngStyle]="{ backgroundColor: getStatusColor(task().status) }"> {{ task().status }} </div>
         <div class="icon"> 
                 <mat-icon style="color: var(--secondary);"
                 (click)="$event.stopPropagation()" 
@@ -30,7 +28,26 @@
     </div>
     @if ( visibleTaskId === task().id ) {
         <div class="task-additional">
-            {{ task().description }}
+            <div class="task-description">
+                {{ task().description }}
+            </div>
+            <div>
+                <p class="center"> Start day: {{ task().startDate }} </p>
+                <p class="center"> End day: {{ task().endDate }} </p>
+                <p> Starting Hour: {{ task().startHour }}h </p>
+                <p> Ending Hour: {{ task().endHour }}h </p>
+            </div>
+            @if (task().status === 'Not Started') {
+                <div class="div-buttons single-button">
+                    <button class="inprogress-button button"> Start Task </button>
+                </div>
+            } @else if (task().status === 'In Progress') {
+                <div class="div-buttons">
+                    <button class="cancel-button button"> Cancel Task </button>
+                    <button class="complete-button button"> Complete Task </button>
+                </div>
+            }
+            
         </div>
     }
 </div>
