@@ -68,9 +68,6 @@ export class TasksService {
     notCompletedTasks = computed(() => this.tasks().filter(task => task.status !== 'Completed'))
 
     getTaskData(taskId: number) {
-        console.log(taskId);
-        console.log(this.tasks().find((task) => task.id === Number(taskId)));
-        
         return this.tasks().find((task) => task.id === taskId) 
             ?? {
                 id: 0,
@@ -83,7 +80,6 @@ export class TasksService {
                 endDate: new Date().toLocaleDateString('en-GB'),
                 priority: '',
             }
-
     }
 
     editTask(TaskData: Task) {

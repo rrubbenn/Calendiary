@@ -120,7 +120,7 @@ export class DashboardComponent {
   private modalService = inject(ModalService);
   
   private tasksService = inject(TasksService);
-  tasks = this.tasksService.notCompletedTasks();
+  tasks = this.tasksService.notCompletedTasks;
 
   private groupService = inject(GroupsService);
   groups = this.groupService.allGroups();

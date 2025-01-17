@@ -37,7 +37,6 @@ export class TaskEditModalComponent {
   ) {
     this.id = data.taskId;
     const taskData = this.tasksService.getTaskData(this.id);
-    console.log(taskData);
 
     this.id = taskData.id;
     this.group = taskData.group;
