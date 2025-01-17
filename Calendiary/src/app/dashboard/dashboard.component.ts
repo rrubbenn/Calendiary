@@ -79,7 +79,7 @@ export class DashboardComponent {
     return Math.floor((AllTasks / Tasks) * 100) + "%";
   }
 
-  getColor(priority: string) {
+  getPriorityColor(priority: string) {
     switch(priority) {
       case 'High':
         return 'var(--high-priority)'
@@ -87,6 +87,19 @@ export class DashboardComponent {
         return 'var(--moderate-priority)'
       case 'Low':
         return 'var(--low-priority)'
+      default:
+        return ''
+    }
+  }
+
+  getStatusColor(status: string) {
+    switch(status) {
+      case 'Completed':
+        return 'var(--completed)'
+      case 'In Progress':
+        return 'var(--in-progress)'
+      case 'Not Started':
+        return 'var(--not-started)'
       default:
         return ''
     }

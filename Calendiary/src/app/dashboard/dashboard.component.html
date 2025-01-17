@@ -47,7 +47,7 @@
             <div> Task </div>
             <div> End Date </div>
             <div class="center"> Priority </div>
-            <div class="center"> Mark as Completed </div>
+            <div class="center"> Task Status </div>
             <div> </div>
         </div>
         <div class="tasks-content">
@@ -57,8 +57,8 @@
                         <div> {{ changeIdforName(task.group) }} </div>
                         <div> {{ task.name }} </div>
                         <div> {{ task.startDate }} </div>
-                        <div class="priority" [ngStyle]="{ backgroundColor: getColor(task.priority) }"> {{ task.priority }} </div>
-                        <button class="complete-button"> Complete </button>
+                        <div class="priority" [ngStyle]="{ color: getPriorityColor(task.priority) }"> {{ task.priority }} </div>
+                        <div class="priority" [ngStyle]="{ backgroundColor: getStatusColor(task.status) }"> {{ task.status }} </div>
                         <div class="icon"> 
                                 <mat-icon style="color: var(--secondary);"
                                 (click)="$event.stopPropagation()" 
@@ -80,7 +80,20 @@
                     </div>
                     @if ( visibleTaskId === task.id ) {
                         <div class="task-additional">
-                            {{ task.description }}
+                            <div class="task-description">
+                                {{ task.description }}
+                            </div>
+                            <div>
+                                <p> Start day: {{ task.startDate }} </p>
+                                <p> End day: {{ task.endDate }} </p>
+                                <p> Starting Hour: {{ task.startHour }}h </p>
+                                <p> Ending Hour: {{ task.endHour }}h </p>
+                            </div>
+                            <div class="div-buttons">
+                                <button class="cancel-button button"> Cancel Task </button>
+                                <button class="complete-button button"> Complete Task </button>
+                                <!-- <button class="complete-button"> Start Task </button> -->
+                            </div>
                         </div>
                     }
                 </div>
