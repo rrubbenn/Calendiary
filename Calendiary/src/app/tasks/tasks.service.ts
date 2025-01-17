@@ -10,9 +10,10 @@ export class TasksService {
         description: 'Analyze the project requirements.',
         startHour: '13:00',
         endHour: '13:00',
-        startDate: new Date('2024-12-01').toLocaleDateString('en-US'),
-        endDate: new Date('2024-12-04').toLocaleDateString('en-US'),
+        startDate: new Date('2024-12-01').toLocaleDateString('en-GB'),
+        endDate: new Date('2024-12-04').toLocaleDateString('en-GB'),
         priority: 'High',
+        status: 'Completed'
         },
         {
         id: 2,
@@ -21,9 +22,10 @@ export class TasksService {
         description: 'Create UI prototypes for the project.',
         startHour: '13:00',
         endHour: '13:00',
-        startDate: new Date('2024-12-01').toLocaleDateString('en-US'),
-        endDate: new Date('2024-12-03').toLocaleDateString('en-US'),
+        startDate: new Date('2024-12-01').toLocaleDateString('en-GB'),
+        endDate: new Date('2024-12-03').toLocaleDateString('en-GB'),
         priority: 'Moderate',
+        status: 'Completed'
         },
         {
         id: 3,
@@ -32,9 +34,10 @@ export class TasksService {
         description: 'Perform integration tests with the system.',
         startHour: '13:00',
         endHour: '13:00',
-        startDate: new Date('2024-12-01').toLocaleDateString('en-US'),
-        endDate: new Date('2024-12-10').toLocaleDateString('en-US'),
+        startDate: new Date('2024-12-01').toLocaleDateString('en-GB'),
+        endDate: new Date('2024-12-10').toLocaleDateString('en-GB'),
         priority: 'Low',
+        status: 'Completed'
         },
         {
         id: 4,
@@ -43,9 +46,10 @@ export class TasksService {
         description: 'Develop the API for the application.',
         startHour: '13:00',
         endHour: '13:00',
-        startDate: new Date('2024-12-01').toLocaleDateString('en-US'),
-        endDate: new Date('2024-12-15').toLocaleDateString('en-US'),
+        startDate: new Date('2024-12-01').toLocaleDateString('en-GB'),
+        endDate: new Date('2024-12-15').toLocaleDateString('en-GB'),
         priority: 'High',
+        status: 'In Progress'
         },
         {
         id: 5,
@@ -54,12 +58,14 @@ export class TasksService {
         description: 'Write documentation for the backend code.',
         startHour: '13:00',
         endHour: '13:00',
-        startDate: new Date('2024-12-01').toLocaleDateString('en-US'),
-        endDate: new Date('2024-10-04').toLocaleDateString('en-US'),
+        startDate: new Date('2024-12-01').toLocaleDateString('en-GB'),
+        endDate: new Date('2024-10-04').toLocaleDateString('en-GB'),
         priority: 'Moderate',
+        status: 'Not Started'
         },
     ]);
     allTasks = computed(() => this.tasks);
+    notCompletedTasks = computed(() => this.tasks().filter(task => task.status !== 'Completed'))
 
     getTaskData(taskId: number) {
         console.log(taskId);
@@ -73,8 +79,8 @@ export class TasksService {
                 description: '',
                 startHour: '',
                 endHour: '',
-                startDate: new Date().toLocaleDateString('en-US'),
-                endDate: new Date().toLocaleDateString('en-US'),
+                startDate: new Date().toLocaleDateString('en-GB'),
+                endDate: new Date().toLocaleDateString('en-GB'),
                 priority: '',
             }
 
