@@ -1,0 +1,28 @@
+<app-menu></app-menu>
+<div class="content">
+    <div class="group-header">
+        <h2> {{ groupData?.group }} </h2>
+        <div>
+            <p> {{ groupData?.description }} </p>
+            <button class="start button" (click)="onAddTask()"> 
+                <mat-icon class="secondary"> add_circle </mat-icon>
+                Add New
+            </button>
+        </div>
+    </div>
+
+    <div class="tasks-info">
+        <div> Task </div>
+        <div class="center"> Start Hour </div>
+        <div class="center"> End Hour </div>
+        <div class="center"> Start Date </div>
+        <div class="center"> End Date </div>
+        <div class="center"> Priority </div>
+        <div class="center"> Mark as Completed </div>
+        <div> </div>
+    </div>
+    <div class="tasks-content">
+        <app-tasks></app-tasks>
+    </div>
+
+</div>

@@ -1,0 +1,57 @@
+<div class="dialog-header">
+    <span>Edit Task</span>
+    <button mat-icon-button class="close-button" (click)="onCancel()" aria-label="Close">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<form #form="ngForm" (ngSubmit)="onSave(form)">
+    <div class="dialog-content">
+        <mat-form-field appearance="fill">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Enter task title" ngModel [(ngModel)]="name" name="name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Priority</mat-label>
+            <mat-select name="priority" [(ngModel)]="priority">
+                <mat-option value="High">High</mat-option>
+                <mat-option value="Medium">Moderate</mat-option>
+                <mat-option value="Low">Low</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="startDate" placeholder="Choose start date" ngModel [(ngModel)]="taskstartDate" name="startDate" required>
+            <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>End Date</mat-label>
+            <input matInput [matDatepicker]="endDate" placeholder="Choose end date" ngModel [(ngModel)]="taskendDate" name="endDate" required>
+            <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Start Hour</mat-label>
+            <input matInput type="time" placeholder="Select start time" ngModel [(ngModel)]="startHour" name="startHour" required>
+        </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Finish Hour</mat-label>
+            <input matInput type="time" placeholder="Select finish time" ngModel [(ngModel)]="endHour" name="endHour" required>
+        </mat-form-field>
+        
+        
+        <mat-form-field appearance="fill" class="description">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Enter description" rows="4" ngModel [(ngModel)]="description" name="description"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="dialog-actions">
+        <button mat-button class="cancel-button" (click)="onCancel()">Cancel</button>
+        <button mat-button class="save-button">Save</button>
+    </div>
+</form>

@@ -51,12 +51,12 @@
             <div> </div>
         </div>
         <div class="tasks-content">
-            @for(task of tasks; track task.id) {
+            @for(task of tasks(); track task.id) {
                 <div class="task">
                     <div class="task-basic" (click)="showDescription(task.id)">
-                        <div> {{ task.group }} </div>
+                        <div> {{ changeIdforName(task.group) }} </div>
                         <div> {{ task.name }} </div>
-                        <div> {{ task.date }} </div>
+                        <div> {{ task.startDate }} </div>
                         <div class="priority" [ngStyle]="{ backgroundColor: getColor(task.priority) }"> {{ task.priority }} </div>
                         <button class="complete-button"> Complete </button>
                         <div class="icon"> 
