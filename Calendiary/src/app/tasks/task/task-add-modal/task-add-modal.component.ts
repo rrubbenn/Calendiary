@@ -43,8 +43,8 @@ export class TaskAddModalComponent {
       id: Math.floor(Math.random() * 100)
     };
 
-    addingTask.startDate = addingTask.startDate.toLocaleDateString('en-US');
-    addingTask.endDate = addingTask.endDate.toLocaleDateString('en-US');
+    addingTask.startDate = addingTask.startDate.toLocaleDateString('en-GB');
+    addingTask.endDate = addingTask.endDate.toLocaleDateString('en-GB');
 
     this.tasksService.addTask(addingTask);
 

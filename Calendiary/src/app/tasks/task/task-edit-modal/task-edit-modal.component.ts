@@ -59,8 +59,8 @@ export class TaskEditModalComponent {
       id: this.id 
     };
 
-    updatedTask.startDate = updatedTask.startDate.toLocaleDateString('en-US');
-    updatedTask.endDate = updatedTask.endDate.toLocaleDateString('en-US');
+    updatedTask.startDate = updatedTask.startDate.toLocaleDateString('en-GB');
+    updatedTask.endDate = updatedTask.endDate.toLocaleDateString('en-GB');
 
     this.tasksService.editTask(updatedTask);
 
