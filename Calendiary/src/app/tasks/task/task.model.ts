@@ -7,5 +7,6 @@ export interface Task {
     endHour: string,
     startDate: string,
     endDate: string,
-    priority: string
+    priority: string,
+    status: string
 }
