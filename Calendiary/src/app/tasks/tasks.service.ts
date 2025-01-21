@@ -102,4 +102,28 @@ export class TasksService {
             oldTasks.filter(task => task.id !== taskId)
         ); 
     }
+
+    setNotStartedStatus(taskId: number) {
+        this.tasks.update((oldTasks) =>
+            oldTasks.map((task) =>
+                task.id === taskId ? { ...task, status: 'Not Started' } : task
+            )
+        );
+    }
+
+    setInProgressStatus(taskId: number) {
+        this.tasks.update((oldTasks) =>
+            oldTasks.map((task) =>
+                task.id === taskId ? { ...task, status: 'In Progress' } : task
+            )
+        );
+    }
+
+    setCompletedStatus(taskId: number) {
+        this.tasks.update((oldTasks) =>
+            oldTasks.map((task) =>
+                task.id === taskId ? { ...task, status: 'Completed' } : task
+            )
+        );
+    }
 }

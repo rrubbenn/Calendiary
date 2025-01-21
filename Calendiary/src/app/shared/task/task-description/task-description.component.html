@@ -1,0 +1,21 @@
+<div class="task-additional">
+    <div class="task-description">
+        {{ task().description }}
+    </div>
+    <div>
+        <p> Start day: {{ task().startDate }} </p>
+        <p> End day: {{ task().endDate }} </p>
+        <p> Starting Hour: {{ task().startHour }}h </p>
+        <p> Ending Hour: {{ task().endHour }}h </p>
+    </div>
+    @if (task().status === 'Not Started') {
+        <div class="div-buttons single-button">
+            <button class="start-button button" (click)="onStartTask(task().id)"> Start Task </button>
+        </div>
+    } @else if (task().status === 'In Progress') {
+        <div class="div-buttons">
+            <button class="cancel-button button" (click)="onCancelTask(task().id)"> Cancel Task </button>
+            <button class="complete-button button" (click)="onCompleteTask(task().id)"> Complete Task </button>
+        </div>
+    }
+</div>

@@ -34,6 +34,15 @@
     color: white;
 }
 
+.single-button {
+    display: flex;
+    justify-content: end;
+}
+
+.start-button {
+    background-color: var(--in-progress);
+}
+
 .complete-button {
     background-color: var(--completed);
 }

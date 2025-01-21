@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TaskEditModalComponent } from '../tasks/task/task-edit-modal/task-edit-modal.component';
-import { TaskAddModalComponent } from '../tasks/task/task-add-modal/task-add-modal.component';
-import { TaskDeleteModalComponent } from '../tasks/task/task-delete-modal/task-delete-modal.component';
+import { TaskEditModalComponent } from '../shared/task/task-edit-modal/task-edit-modal.component';
+import { TaskAddModalComponent } from '../shared/task/task-add-modal/task-add-modal.component';
+import { TaskDeleteModalComponent } from '../shared/task/task-delete-modal/task-delete-modal.component';
+import { TaskConfirmModalComponent } from '../shared/task/task-confirm-modal/task-confirm-modal.component';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {
@@ -27,6 +28,13 @@ export class ModalService {
 
     openDeleteTaskModal(taskId: number) {
         return this.dialog.open(TaskDeleteModalComponent, {
+            width: '40%',
+            data: { taskId },
+        });
+    }
+
+    openConfirmCompleteTaskModal(taskId: number) {
+        return this.dialog.open(TaskConfirmModalComponent, {
             width: '40%',
             data: { taskId },
         });

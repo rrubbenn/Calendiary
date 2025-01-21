@@ -7,8 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Task } from '../task.model';
-import { TasksService } from '../../tasks.service';
+import { Task } from '../../../tasks/task/task.model';
+import { TasksService } from '../../../tasks/tasks.service';
 
 @Component({
   selector: 'app-task-edit-modal',
