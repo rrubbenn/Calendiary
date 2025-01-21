@@ -57,9 +57,14 @@
     height: 10%;
 }
 
+.container ul .menu-group {
+    display: flex;
+}
+
 .container ul .menu-group .menu-item {
     display: flex;
     justify-content: space-between;
+    padding: 1em;
 }
 
 .container ul .menu-group .menu-item:hover {
@@ -71,11 +76,15 @@
     text-decoration: none;
     height: 100%;
     width: 100%;
-    padding: 1em 1em;
 }
 
 .container ul .menu-divider {
     border: none;
     border-top: 1px solid #555;
     margin: 10px 0;
+}
+
+.text-decoration-none {
+    text-decoration: none;
+    color: white;
 }
