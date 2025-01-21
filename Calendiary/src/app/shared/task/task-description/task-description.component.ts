@@ -16,10 +16,6 @@ export class TaskDescriptionComponent {
 
   private tasksService = inject(TasksService);
   private modalService = inject(ModalService);
-  
-  ngOnInit () {
-    console.log(this.task().status);
-  }
 
   onCompleteTask(taskId: number) {
     this.modalService.openConfirmCompleteTaskModal(taskId).afterClosed().subscribe((result) => {

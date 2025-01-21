@@ -26,9 +26,7 @@ export class TaskAddModalComponent {
     @Inject(MAT_DIALOG_DATA) public data: { groupId: number },
     private tasksService: TasksService
   ) {
-    
     this.groupId = data.groupId;
-    console.log(this.groupId);
   }
 
   onCancel(): void {
