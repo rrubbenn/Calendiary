@@ -36,7 +36,7 @@ export class GroupsService {
 
     addGroup(GroupData: {group: string, description: string}){
         const newGroup: Group = {
-            groupId: Math.random(),
+            groupId: Math.floor(Math.random() * 100),
             ...GroupData,
         } 
         this.groups.update((oldGroups) => [...oldGroups, newGroup])

@@ -40,7 +40,8 @@ export class TaskAddModalComponent {
     const addingTask = {
       ...form.form.value,
       group: this.groupId,
-      id: Math.floor(Math.random() * 100)
+      id: Math.floor(Math.random() * 100),
+      status: 'Not Started'
     };
 
     addingTask.startDate = addingTask.startDate.toLocaleDateString('en-GB');
