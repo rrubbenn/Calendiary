@@ -9,13 +9,13 @@
             <h3> Tasks Summary </h3>
         </div>
         <div class="summary-content">
-            @for (chart of charts; track chart.title) {
+            @for (chart of charts(); track chart.title) {
                 <div class="summary-block">
                     <div class="relative">
                         <canvas baseChart
                             [data]="{ datasets: [
                                 { 
-                                    data: [ chart.tasks, chart.allTasks ], 
+                                    data: [ chart.percentage, chart.percentageremaining], 
                                     backgroundColor: chart.backgroundColor, 
                                     hoverBackgroundColor: chart.hoverBackgroundColor, 
                                     hoverBorderWidth: chart.hoverBorderWidth, 
@@ -27,7 +27,7 @@
                             >
                         </canvas>
                         <div class="absolute-center">
-                            <h1> {{ chart.percentage }} </h1>
+                            <h1> {{ chart.percentage }}% </h1>
                         </div>
                     </div>
     

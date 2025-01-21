@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { MenuComponent } from "../shared/menu/menu.component";
 import { MatIconModule } from '@angular/material/icon';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
@@ -23,18 +23,21 @@ export class DashboardComponent {
   private groupService = inject(GroupsService);
   private tasksService = inject(TasksService);
   
-  allTasksCount = this.tasksService.allTasks().length;
-  inProgressTasksCount = this.tasksService.inProgressTasks().length;
-  completedTasksCount = this.tasksService.completedTasks().length;
-  notStartedTasksCount = this.tasksService.notStartedTasks().length;
+  allTasksCount = computed(() => this.tasksService.allTasks().length);
+  inProgressTasksCount = computed(() => this.tasksService.inProgressTasks().length);
+  completedTasksCount = computed(() => this.tasksService.completedTasks().length);
+  notStartedTasksCount = computed(() => this.tasksService.notStartedTasks().length);
   tasks = this.tasksService.notCompletedTasks;
   groups = this.groupService.allGroups();
+
+
   
-  public charts = [
+  public charts = computed(() => [
     {
-      tasks: this.completedTasksCount,
-      allTasks: this.allTasksCount,
-      percentage: this.calculatePercentage(this.completedTasksCount, this.allTasksCount),
+      tasks: this.completedTasksCount(),
+      allTasks: this.allTasksCount(),
+      percentage: this.calculatePercentage(this.completedTasksCount(), this.allTasksCount()),
+      percentageremaining: this.calculatePercentageRemaining(this.calculatePercentage(this.completedTasksCount(), this.allTasksCount())),
       backgroundColor: ['#36bd7c', '#B0B0B0'],
       hoverBackgroundColor: ['#28a745', '#9e9e9e'],
       hoverBorderWidth: 0,
@@ -43,9 +46,10 @@ export class DashboardComponent {
       class: 'completed'
     },
     {
-      tasks: this.inProgressTasksCount,
-      allTasks: this.allTasksCount,
-      percentage: this.calculatePercentage(this.inProgressTasksCount, this.allTasksCount),
+      tasks: this.inProgressTasksCount(),
+      allTasks: this.allTasksCount(),
+      percentage: this.calculatePercentage(this.inProgressTasksCount(), this.allTasksCount()),
+      percentageremaining: this.calculatePercentageRemaining(this.calculatePercentage(this.inProgressTasksCount(), this.allTasksCount())),
       backgroundColor: ['#004aad', '#B0B0B0'],
       hoverBackgroundColor: ['#007bff', '#9e9e9e'],
       hoverBorderWidth: 0,
@@ -54,9 +58,10 @@ export class DashboardComponent {
       class: 'in-progress'
     },
     {
-      tasks: this.notStartedTasksCount,
-      allTasks: this.allTasksCount,
-      percentage: this.calculatePercentage(this.notStartedTasksCount, this.allTasksCount),
+      tasks: this.notStartedTasksCount(),
+      allTasks: this.allTasksCount(),
+      percentage: this.calculatePercentage(this.notStartedTasksCount(), this.allTasksCount()),
+      percentageremaining: this.calculatePercentageRemaining(this.calculatePercentage(this.notStartedTasksCount(), this.allTasksCount())),
       backgroundColor: ['#f39c12', '#B0B0B0'],
       hoverBackgroundColor: ['#f1c40f', '#9e9e9e'],
       hoverBorderWidth: 0,
@@ -64,7 +69,7 @@ export class DashboardComponent {
       title: 'Not Started',
       class: 'not-started'
     }
-  ];
+  ]);
 
   public chartType: ChartConfiguration<'doughnut'>['type'] = 'doughnut';
 
@@ -77,7 +82,11 @@ export class DashboardComponent {
   visibleDescription = false;
 
   calculatePercentage (AllTasks: number, Tasks: number) {
-    return Math.floor((AllTasks / Tasks) * 100) + "%";
+    return Math.floor((AllTasks / Tasks) * 100);
+  }
+
+  calculatePercentageRemaining(Percentage: number) { 
+    return (100 - Percentage);
   }
 
   getPriorityColor(priority: string) {
