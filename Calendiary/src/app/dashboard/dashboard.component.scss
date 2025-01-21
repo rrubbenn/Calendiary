@@ -102,51 +102,10 @@ mat-icon {
     gap: 1em;
 }
 
-.task-additional {
-    display: grid;
-    grid-template-columns: 68% 30%;
-    grid-template-rows: auto auto;
-    gap: 2%;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #f4f4f4;
-    border-top: 1px solid #ddd;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.task-description {
-    border-right: 1px solid var(--secondary);
-}
-
-.task-additional p {
-    padding: 0em 0em;
-    margin: 0.5em 0em;
-}
-
 .d-grid {
     display: grid;
     grid-template-columns: 45% 45%;
     gap: 10%;
-}
-
-.div-buttons {
-    grid-column: 2;
-    display: flex;
-    justify-content:space-between;
-    margin-top: 1em;
-}
-
-.button {
-    padding: 1em;
-    border: 0px;
-    border-radius: 10px;
-    color: white;
-}
-
-.cancel-button {
-    background-color: var(--secondary);
-
 }
 
 .task-basic div {
@@ -162,14 +121,6 @@ mat-icon {
     border-radius: 10px;
     color: white;
     justify-content: center;
-}
-
-.complete-button {
-    border: 0px;
-    border-radius: 10px;
-    // padding: 0.5em;
-    color: white;
-    background-color: var(--completed);
 }
 
 .task-basic .icon {

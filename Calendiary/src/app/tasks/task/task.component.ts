@@ -4,11 +4,12 @@ import { NgStyle } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { ModalService } from '../../services/modal.service';
+import { TaskDescriptionComponent } from "../../shared/task-description/task-description.component";
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [ NgStyle, MatIconModule, MatMenuModule ],
+  imports: [NgStyle, MatIconModule, MatMenuModule, TaskDescriptionComponent],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })

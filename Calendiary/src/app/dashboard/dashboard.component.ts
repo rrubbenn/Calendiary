@@ -8,11 +8,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TasksService } from '../tasks/tasks.service';
 import { GroupsService } from '../services/groups.service';
 import { ModalService } from '../services/modal.service';
+import { TaskDescriptionComponent } from '../shared/task-description/task-description.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MenuComponent, MatIconModule, MatMenuModule, NgChartsModule, NgStyle],
+  imports: [MenuComponent, TaskDescriptionComponent, MatIconModule, MatMenuModule, NgChartsModule, NgStyle],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

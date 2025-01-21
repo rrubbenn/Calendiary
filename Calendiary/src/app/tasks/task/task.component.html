@@ -27,27 +27,6 @@
 
     </div>
     @if ( visibleTaskId === task().id ) {
-        <div class="task-additional">
-            <div class="task-description">
-                {{ task().description }}
-            </div>
-            <div>
-                <p class="center"> Start day: {{ task().startDate }} </p>
-                <p class="center"> End day: {{ task().endDate }} </p>
-                <p> Starting Hour: {{ task().startHour }}h </p>
-                <p> Ending Hour: {{ task().endHour }}h </p>
-            </div>
-            @if (task().status === 'Not Started') {
-                <div class="div-buttons single-button">
-                    <button class="inprogress-button button"> Start Task </button>
-                </div>
-            } @else if (task().status === 'In Progress') {
-                <div class="div-buttons">
-                    <button class="cancel-button button"> Cancel Task </button>
-                    <button class="complete-button button"> Complete Task </button>
-                </div>
-            }
-            
-        </div>
+        <app-task-description [task]="task()"></app-task-description>
     }
 </div>
