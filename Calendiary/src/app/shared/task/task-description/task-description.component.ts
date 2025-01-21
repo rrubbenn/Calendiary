@@ -1,6 +1,6 @@
 import { Component, inject, input, Input, Signal } from '@angular/core';
 import { Task } from '../../../tasks/task/task.model';
-import { TasksService } from '../../../tasks/tasks.service';
+import { TasksService } from '../../../services/tasks.service';
 import { ModalService } from '../../../services/modal.service';
 
 @Component({

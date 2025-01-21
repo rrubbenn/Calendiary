@@ -1,7 +1,7 @@
 import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
 import { ActivatedRoute, Router } from '@angular/router';
-import { TasksService } from './tasks.service';
+import { TasksService } from '../services/tasks.service';
 
 @Component({
   selector: 'app-tasks',

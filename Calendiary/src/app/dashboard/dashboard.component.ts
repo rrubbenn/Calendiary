@@ -5,7 +5,7 @@ import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { NgStyle } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
-import { TasksService } from '../tasks/tasks.service';
+import { TasksService } from '../services/tasks.service';
 import { GroupsService } from '../services/groups.service';
 import { ModalService } from '../services/modal.service';
 import { TaskDescriptionComponent } from '../shared/task/task-description/task-description.component';

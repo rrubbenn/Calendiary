@@ -1,5 +1,5 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { Task } from './task/task.model';
+import { Task } from '../tasks/task/task.model';
 @Injectable({ providedIn: 'root' })
 export class TasksService {
     private tasks = signal<Task[]>([
