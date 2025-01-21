@@ -1,8 +1,7 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, inject, OnInit, signal } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
 import { ActivatedRoute, Router } from '@angular/router';
 import { TasksService } from './tasks.service';
-import { Task } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -16,11 +15,11 @@ export class TasksComponent implements OnInit {
   groupId = signal<number | null>(null);
 
   private tasksService = inject(TasksService);
-  tasks = this.tasksService.allTasks();
+  tasks = this.tasksService.allTasks;
 
   filteredTasks = computed(() => 
-    this.tasks.filter(task => task.group === this.groupId())
-  )
+    this.tasks().filter(task => task.group === this.groupId())
+  );
 
   private route = inject(ActivatedRoute);
 
