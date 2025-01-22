@@ -64,7 +64,6 @@
 .container ul .menu-group .menu-item {
     display: flex;
     justify-content: space-between;
-    padding: 1em;
 }
 
 .container ul .menu-group .menu-item:hover {
@@ -76,6 +75,7 @@
     text-decoration: none;
     height: 100%;
     width: 100%;
+    padding: 1em 1em;
 }
 
 .container ul .menu-divider {
