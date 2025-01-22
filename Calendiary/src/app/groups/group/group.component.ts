@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, computed, effect, inject, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from "../../shared/menu/menu.component";
 import { TasksComponent } from "../../tasks/tasks.component";
@@ -16,20 +16,21 @@ import { ModalService } from '../../services/modal.service';
 })
 export class GroupComponent implements OnInit {
   
-  groupId!: number;
-  groupData: Group | undefined;
   private groupsService = inject(GroupsService);
   private modalsService = inject(ModalService)
+
+  groupId!: number;
+  groupData = computed(() =>
+    this.groupsService.allGroups().find(group => group.groupId === this.groupId)
+  );
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.groupId = parseInt(params['groupId']);
-      this.groupData = this.groupsService.getGroupData(this.groupId)
     });
   }
-
 
   onAddTask() {
     this.modalsService.openAddTaskModal(this.groupId);

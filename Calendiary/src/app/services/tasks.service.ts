@@ -103,6 +103,12 @@ export class TasksService {
         ); 
     }
 
+    deleteTasksByGroupId(groupId: number) {
+        this.tasks.update((oldTasks) => 
+            oldTasks.filter(task => task.group !== groupId)
+        ); 
+    }
+
     setNotStartedStatus(taskId: number) {
         this.tasks.update((oldTasks) =>
             oldTasks.map((task) =>
